@@ -1,6 +1,6 @@
 # coders-tower
 
-Stronger bases to grow higher
+**Stronger bases to grow higher**
 
 I am Daniel Andres Pelaez Lopez. I am a Software Engineer with more than 10 of experience developing software.
 
