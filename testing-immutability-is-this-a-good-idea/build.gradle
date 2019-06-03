@@ -12,17 +12,7 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-group 'com.coderstower.blog'
-version '1.0-SNAPSHOT'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.12.2'
 
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
