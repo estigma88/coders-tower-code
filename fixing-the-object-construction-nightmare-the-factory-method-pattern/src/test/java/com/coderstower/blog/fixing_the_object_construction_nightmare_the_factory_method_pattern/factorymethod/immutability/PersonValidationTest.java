@@ -1,7 +1,5 @@
 package com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.factorymethod.immutability;
 
-import com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.factorymethod.immutability.Person;
-import com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.factorymethod.immutability.PersonValidation;
 import org.junit.Test;
 
 import java.time.LocalDate;

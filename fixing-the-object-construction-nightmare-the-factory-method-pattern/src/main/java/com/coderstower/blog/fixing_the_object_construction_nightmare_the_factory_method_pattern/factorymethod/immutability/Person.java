@@ -48,7 +48,8 @@ class Person {
     public static Person newPersonWithBirthDate(
             LocalDate birthDate) {
         return new Person(null,
-                Collections.emptyList(), birthDate);
+                Collections.emptyList(),
+                birthDate);
     }
 
     public String getName() {
