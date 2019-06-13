@@ -2,17 +2,18 @@ package com.coderstower.blog.fixing_the_object_construction_nightmare_the_factor
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-public class Person {
+class Person {
     private String name;
     private List<String> addresses;
     private LocalDate birthDate;
 
-    public Integer calculateAgeFrom(LocalDate currentDate){
-        return Period.between(currentDate, birthDate).getDays();
+    public Integer calculateAgeFrom(
+            LocalDate currentDate) {
+        return Period
+                .between(birthDate, currentDate)
+                .getYears();
     }
 
     public String getName() {
@@ -27,7 +28,8 @@ public class Person {
         return addresses;
     }
 
-    public void setAddresses(List<String> addresses) {
+    public void setAddresses(
+            List<String> addresses) {
         this.addresses = addresses;
     }
 
@@ -35,7 +37,8 @@ public class Person {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(
+            LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
-public class Person {
+class Person {
     private String name;
     private List<String> addresses;
     private LocalDate birthDate;
@@ -27,9 +27,15 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public Integer calculateAgeFrom(LocalDate currentDate){
+    public Person(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Integer calculateAgeFrom(
+            LocalDate currentDate) {
         return Period
-                .between(currentDate, birthDate).getDays();
+                .between(birthDate, currentDate)
+                .getYears();
     }
 
     public String getName() {

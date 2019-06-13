@@ -5,20 +5,25 @@ import java.time.Period;
 import java.util.Collections;
 import java.util.List;
 
-public class Person {
+class Person {
     private final String name;
     private final List<String> addresses;
     private final LocalDate birthDate;
 
-    public Person(String name, List<String> addresses, LocalDate birthDate) {
+    public Person(String name,
+                  List<String> addresses,
+                  LocalDate birthDate) {
         this.name = name;
-        this.addresses = Collections.unmodifiableList(addresses);
+        this.addresses = Collections
+                .unmodifiableList(addresses);
         this.birthDate = birthDate;
     }
 
-    public Integer calculateAgeFrom(LocalDate currentDate){
+    public Integer calculateAgeFrom(
+            LocalDate currentDate) {
         return Period
-                .between(currentDate, birthDate).getDays();
+                .between(birthDate, currentDate)
+                .getYears();
     }
 
     public String getName() {
