@@ -1,4 +1,4 @@
-package com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.factorymethod;
+package com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.factorymethod.immutability;
 
 class PersonValidation {
     public boolean validate(Person person) {

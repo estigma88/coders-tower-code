@@ -16,10 +16,17 @@ public class PersonTest {
                         .emptyList(), LocalDate
                 .of(1988, 5, 5));
 
+
+        Person personCopy = new Person("name",
+                Collections
+                        .emptyList(), LocalDate
+                .of(1988, 5, 5));
+
         Integer age = person.calculateAgeFrom(
                 LocalDate.of(2019, 5, 5));
 
         assertThat(age).isEqualTo(31);
+        assertThat(person).isEqualTo(personCopy);
     }
 
 }
