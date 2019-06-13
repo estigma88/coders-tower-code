@@ -1,6 +1,7 @@
 package com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.setters;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -9,6 +10,10 @@ public class Person {
     private String name;
     private List<String> addresses;
     private LocalDate birthDate;
+
+    public Integer calculateAgeFrom(LocalDate currentDate){
+        return Period.between(currentDate, birthDate).getDays();
+    }
 
     public String getName() {
         return name;
