@@ -13,9 +13,7 @@ public class PersonValidationTest {
 
     @Test
     public void validate_birthDayNotNull_true() {
-        Person person = new Person(null,
-                Collections
-                        .emptyList(),
+        Person person = new Person(
                 LocalDate.of(1988, 5, 5));
 
         boolean valid = personValidation

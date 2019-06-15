@@ -11,15 +11,10 @@ public class PersonTest {
 
     @Test
     public void calculateAgeFrom_from1988_ageIs31() {
-        Person person = new Person("name",
-                Collections
-                        .emptyList(), LocalDate
+        Person person = new Person(LocalDate
                 .of(1988, 5, 5));
 
-
-        Person personCopy = new Person("name",
-                Collections
-                        .emptyList(), LocalDate
+        Person personCopy = new Person(LocalDate
                 .of(1988, 5, 5));
 
         Integer age = person.calculateAgeFrom(
