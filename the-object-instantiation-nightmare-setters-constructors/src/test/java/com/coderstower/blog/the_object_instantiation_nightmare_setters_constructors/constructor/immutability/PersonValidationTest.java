@@ -1,4 +1,4 @@
-package com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.setters;
+package com.coderstower.blog.the_object_instantiation_nightmare_setters_constructors.constructor.immutability;
 
 import org.junit.Test;
 
@@ -12,9 +12,7 @@ public class PersonValidationTest {
 
     @Test
     public void validate_birthDayNotNull_true() {
-        Person person = new Person();
-
-        person.setBirthDate(
+        Person person = new Person(
                 LocalDate.of(1988, 5, 5));
 
         boolean valid = personValidation

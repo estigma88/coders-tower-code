@@ -1,9 +1,8 @@
-package com.coderstower.blog.fixing_the_object_construction_nightmare_the_factory_method_pattern.constructor.immutability;
+package com.coderstower.blog.the_object_instantiation_nightmare_setters_constructors.setters;
 
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.Collections;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -13,7 +12,9 @@ public class PersonValidationTest {
 
     @Test
     public void validate_birthDayNotNull_true() {
-        Person person = new Person(
+        Person person = new Person();
+
+        person.setBirthDate(
                 LocalDate.of(1988, 5, 5));
 
         boolean valid = personValidation
