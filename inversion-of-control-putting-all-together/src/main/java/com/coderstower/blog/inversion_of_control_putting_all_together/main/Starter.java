@@ -6,7 +6,8 @@ import com.coderstower.blog.inversion_of_control_putting_all_together.abstractio
 public class Starter {
     public static void main(String[] args){
 
-        Repository repository = new MySQLRepository();
+        //Repository repository = new MySQLRepository();
+        Repository repository = new MongoDBRepository();
 
         Service service = new Service(repository);
 
