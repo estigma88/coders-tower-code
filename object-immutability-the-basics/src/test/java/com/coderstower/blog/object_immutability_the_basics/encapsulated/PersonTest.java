@@ -7,6 +7,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Java6Assertions.assertThat;
+
 public class PersonTest {
     @Test
     public void create_setAccess_newPerson() {
@@ -46,6 +48,12 @@ public class PersonTest {
             scheduled.schedule(service2, generateTime(), TimeUnit.MILLISECONDS);
 
             Thread.sleep(2050);
+
+
+            for (String info1 : service1.getInfo()) {
+                System.out.println(info1);
+                assertThat(info1).isEqualTo("Service1 address: Street 25");
+            }
         }
     }
 
