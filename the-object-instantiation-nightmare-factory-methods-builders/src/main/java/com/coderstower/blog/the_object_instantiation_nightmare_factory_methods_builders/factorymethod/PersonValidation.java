@@ -2,8 +2,8 @@ package com.coderstower.blog.the_object_instantiation_nightmare_factory_methods_
 
 class PersonValidation {
 
-    public boolean validate(Person person) {
-        return person.getBirthDate() != null;
-    }
+  public boolean validate(Person person) {
+    return person.getBirthDate() != null;
+  }
 
 }
