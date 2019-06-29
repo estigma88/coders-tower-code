@@ -1,4 +1,7 @@
-package com.coderstower.blog.the_object_instantiation_nightmare_factory_methods_builders.factorymethod;
+package com.coderstower.blog.the_object_instantiation_nightmare_the_builder_pattern.builder.lombok;
+
+import lombok.Builder;
+import lombok.Singular;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -6,8 +9,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class Person {
+@Builder
+class Person {
   private final String name;
+  @Singular
   private final List<String> addresses;
   private final LocalDate birthDate;
 
@@ -17,28 +22,6 @@ public class Person {
     this.addresses = Collections
             .unmodifiableList(addresses);
     this.birthDate = birthDate;
-  }
-
-  public static Person newPersonWithBirthDate(
-          LocalDate birthDate) {
-    return new Person(null, Collections.emptyList(),
-            birthDate);
-  }
-
-  public static Person newPersonWithName(String name) {
-    return new Person(name, Collections.emptyList(),
-            null);
-  }
-
-  public static Person newPersonWithNameAndAddresses(
-          String name, List<String> addresses) {
-    return new Person(name, addresses, null);
-  }
-
-  public static Person newFullPerson(String name,
-                                     List<String> addresses,
-                                     LocalDate birthDate) {
-    return new Person(name, addresses, birthDate);
   }
 
   public Integer calculateAgeFrom(
