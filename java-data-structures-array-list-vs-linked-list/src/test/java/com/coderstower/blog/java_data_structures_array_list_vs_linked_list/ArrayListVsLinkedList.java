@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class ArrayListVsLinkedList {
   private final int amountData = 10000000;
   private final int amountIterations = 10;
@@ -26,8 +28,11 @@ public class ArrayListVsLinkedList {
       arrayListTime += sort(arrayList);
       linkedListTime += sort(linkedList);
     }
+
     printResults("Sort", arrayListTime,
             linkedListTime);
+
+    assertThat(arrayListTime).isLessThan(linkedListTime);
   }
 
   @Test
@@ -50,6 +55,8 @@ public class ArrayListVsLinkedList {
 
     printResults("AddToEnd", arrayListTime,
             linkedListTime);
+
+    assertThat(linkedListTime).isLessThan(arrayListTime);
   }
 
   @Test
@@ -70,6 +77,8 @@ public class ArrayListVsLinkedList {
 
     printResults("removeToEnd", arrayListTime,
             linkedListTime);
+
+    assertThat(linkedListTime).isEqualTo(arrayListTime);
   }
 
   @Test
@@ -90,6 +99,8 @@ public class ArrayListVsLinkedList {
 
     printResults("removeToMiddle", arrayListTime,
             linkedListTime);
+
+    assertThat(linkedListTime).isLessThan(arrayListTime);
   }
 
   @Test
@@ -110,6 +121,8 @@ public class ArrayListVsLinkedList {
 
     printResults("removeToFirst", arrayListTime,
             linkedListTime);
+
+    assertThat(linkedListTime).isLessThan(arrayListTime);
   }
 
   @Test
@@ -133,6 +146,8 @@ public class ArrayListVsLinkedList {
 
     printResults("AddToMiddle", arrayListTime,
             linkedListTime);
+
+    assertThat(linkedListTime).isLessThan(arrayListTime);
   }
 
   @Test
@@ -156,6 +171,8 @@ public class ArrayListVsLinkedList {
 
     printResults("addToFirst", arrayListTime,
             linkedListTime);
+
+    assertThat(linkedListTime).isLessThan(arrayListTime);
   }
 
   @Test
@@ -177,6 +194,8 @@ public class ArrayListVsLinkedList {
 
     printResults("iterate", arrayListTime,
             linkedListTime);
+
+    assertThat(arrayListTime).isLessThan(linkedListTime);
   }
 
   @Test
@@ -199,6 +218,8 @@ public class ArrayListVsLinkedList {
 
     printResults("contains", arrayListTime,
             linkedListTime);
+
+    assertThat(arrayListTime).isLessThan(linkedListTime);
   }
 
   private long contains(List<Integer> list,
