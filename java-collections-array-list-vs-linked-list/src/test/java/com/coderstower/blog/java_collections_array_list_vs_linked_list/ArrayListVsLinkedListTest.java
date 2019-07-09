@@ -1,4 +1,4 @@
-package com.coderstower.blog.java_data_structures_array_list_vs_linked_list;
+package com.coderstower.blog.java_collections_array_list_vs_linked_list;
 
 
 import org.junit.Test;
@@ -8,32 +8,9 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ArrayListVsLinkedList {
+public class ArrayListVsLinkedListTest {
   private final int amountData = 10000000;
   private final int amountIterations = 10;
-
-  @Test
-  public void sort() {
-    long arrayListTime = 0;
-    long linkedListTime = 0;
-
-    for (int i = 1; i <= amountIterations; i++) {
-      Collection<Integer> data = populate(amountData);
-
-      ArrayList<Integer> arrayList = new ArrayList<>(
-              data);
-      LinkedList<Integer> linkedList = new LinkedList<>(
-              data);
-
-      arrayListTime += sort(arrayList);
-      linkedListTime += sort(linkedList);
-    }
-
-    printResults("Sort", arrayListTime,
-            linkedListTime);
-
-    assertThat(arrayListTime).isLessThan(linkedListTime);
-  }
 
   @Test
   public void add_end() {
@@ -58,6 +35,98 @@ public class ArrayListVsLinkedList {
 
     assertThat(linkedListTime).isLessThan(arrayListTime);
   }
+
+  private long addToEnd(List<Integer> list,
+                        Integer value) {
+    return calculateTime(() -> list
+            .add(value));
+  }
+
+  @Test
+  public void add_middle() {
+    long arrayListTime = 0;
+    long linkedListTime = 0;
+    int valueAdded = amountData / 2;
+
+    for (int i = 1; i <= amountIterations; i++) {
+      Collection<Integer> data = populate(amountData);
+
+      ArrayList<Integer> arrayList = new ArrayList<>(
+              data);
+      LinkedList<Integer> linkedList = new LinkedList<>(
+              data);
+
+      arrayListTime += addToMiddle(arrayList, valueAdded);
+      linkedListTime += addToMiddle(linkedList,
+              valueAdded);
+    }
+
+    printResults("AddToMiddle", arrayListTime,
+            linkedListTime);
+
+    assertThat(linkedListTime).isLessThan(arrayListTime);
+  }
+
+  private long addToMiddle(List<Integer> list,
+                           Integer value) {
+    return calculateTime(() -> list
+            .add(value,  value));
+  }
+
+  @Test
+  public void add_first() {
+    long arrayListTime = 0;
+    long linkedListTime = 0;
+    int valueAdded = amountData / 2;
+
+    for (int i = 1; i <= amountIterations; i++) {
+      Collection<Integer> data = populate(amountData);
+
+      ArrayList<Integer> arrayList = new ArrayList<>(
+              data);
+      LinkedList<Integer> linkedList = new LinkedList<>(
+              data);
+
+      arrayListTime += addToFirst(arrayList, valueAdded);
+      linkedListTime += addToFirst(linkedList,
+              valueAdded);
+    }
+
+    printResults("addToFirst", arrayListTime,
+            linkedListTime);
+
+    assertThat(linkedListTime).isLessThan(arrayListTime);
+  }
+
+  private long addToFirst(List<Integer> list,
+                          Integer value) {
+    return calculateTime(() -> list
+            .add(0,  value));
+  }
+
+  @Test
+  public void sort() {
+    long arrayListTime = 0;
+    long linkedListTime = 0;
+
+    for (int i = 1; i <= amountIterations; i++) {
+      Collection<Integer> data = populate(amountData);
+
+      ArrayList<Integer> arrayList = new ArrayList<>(
+              data);
+      LinkedList<Integer> linkedList = new LinkedList<>(
+              data);
+
+      arrayListTime += sort(arrayList);
+      linkedListTime += sort(linkedList);
+    }
+
+    printResults("Sort", arrayListTime,
+            linkedListTime);
+
+    assertThat(arrayListTime).isLessThan(linkedListTime);
+  }
+
 
   @Test
   public void remove_end() {
@@ -125,55 +194,6 @@ public class ArrayListVsLinkedList {
     assertThat(linkedListTime).isLessThan(arrayListTime);
   }
 
-  @Test
-  public void add_middle() {
-    long arrayListTime = 0;
-    long linkedListTime = 0;
-    int valueAdded = amountData / 2;
-
-    for (int i = 1; i <= amountIterations; i++) {
-      Collection<Integer> data = populate(amountData);
-
-      ArrayList<Integer> arrayList = new ArrayList<>(
-              data);
-      LinkedList<Integer> linkedList = new LinkedList<>(
-              data);
-
-      arrayListTime += addToMiddle(arrayList, valueAdded);
-      linkedListTime += addToMiddle(linkedList,
-              valueAdded);
-    }
-
-    printResults("AddToMiddle", arrayListTime,
-            linkedListTime);
-
-    assertThat(linkedListTime).isLessThan(arrayListTime);
-  }
-
-  @Test
-  public void add_first() {
-    long arrayListTime = 0;
-    long linkedListTime = 0;
-    int valueAdded = amountData / 2;
-
-    for (int i = 1; i <= amountIterations; i++) {
-      Collection<Integer> data = populate(amountData);
-
-      ArrayList<Integer> arrayList = new ArrayList<>(
-              data);
-      LinkedList<Integer> linkedList = new LinkedList<>(
-              data);
-
-      arrayListTime += addToFirst(arrayList, valueAdded);
-      linkedListTime += addToFirst(linkedList,
-              valueAdded);
-    }
-
-    printResults("addToFirst", arrayListTime,
-            linkedListTime);
-
-    assertThat(linkedListTime).isLessThan(arrayListTime);
-  }
 
   @Test
   public void iterate() {
@@ -222,6 +242,35 @@ public class ArrayListVsLinkedList {
     assertThat(arrayListTime).isLessThan(linkedListTime);
   }
 
+  @Test
+  public void get() {
+    long arrayListTime = 0;
+    long linkedListTime = 0;
+    int indexSearched = amountData / 2;
+
+    for (int i = 1; i <= amountIterations; i++) {
+      Collection<Integer> data = populate(amountData);
+
+      ArrayList<Integer> arrayList = new ArrayList<>(
+              data);
+      LinkedList<Integer> linkedList = new LinkedList<>(
+              data);
+
+      arrayListTime += get(arrayList, indexSearched);
+      linkedListTime += get(linkedList, indexSearched);
+    }
+
+    printResults("get", arrayListTime,
+            linkedListTime);
+
+    assertThat(arrayListTime).isLessThan(linkedListTime);
+  }
+
+  private long get(List<Integer> list,
+                        int indexSearched) {
+    return calculateTime(() -> list.get(indexSearched));
+  }
+
   private long contains(List<Integer> list,
                         int valueSearched) {
     return calculateTime(() -> list.contains(valueSearched));
@@ -233,23 +282,6 @@ public class ArrayListVsLinkedList {
     });
   }
 
-  private long addToFirst(List<Integer> list,
-                           Integer value) {
-    return calculateTime(() -> list
-            .add(0,  value));
-  }
-
-  private long addToMiddle(List<Integer> list,
-                        Integer value) {
-    return calculateTime(() -> list
-            .add(value,  value));
-  }
-
-  private long addToEnd(List<Integer> list,
-                        Integer value) {
-    return calculateTime(() -> list
-            .add(value));
-  }
 
   private long removeToFirst(List<Integer> list) {
     return calculateTime(() -> list
