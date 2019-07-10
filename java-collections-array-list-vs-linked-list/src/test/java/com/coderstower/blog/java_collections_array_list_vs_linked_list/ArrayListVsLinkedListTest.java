@@ -25,6 +25,7 @@ public class ArrayListVsLinkedListTest {
               data);
       LinkedList<Integer> linkedList = new LinkedList<>(
               data);
+
       arrayListTime += addToEnd(arrayList, valueAdded);
       linkedListTime += addToEnd(linkedList,
               valueAdded);
@@ -74,7 +75,7 @@ public class ArrayListVsLinkedListTest {
   }
 
   @Test
-  public void add_first() {
+  public void add_start() {
     long arrayListTime = 0;
     long linkedListTime = 0;
     int valueAdded = amountData / 2;
@@ -87,18 +88,18 @@ public class ArrayListVsLinkedListTest {
       LinkedList<Integer> linkedList = new LinkedList<>(
               data);
 
-      arrayListTime += addToFirst(arrayList, valueAdded);
-      linkedListTime += addToFirst(linkedList,
+      arrayListTime += addToStart(arrayList, valueAdded);
+      linkedListTime += addToStart(linkedList,
               valueAdded);
     }
 
-    printResults("addToFirst", arrayListTime,
+    printResults("addToStart", arrayListTime,
             linkedListTime);
 
     assertThat(linkedListTime).isLessThan(arrayListTime);
   }
 
-  private long addToFirst(List<Integer> list,
+  private long addToStart(List<Integer> list,
                           Integer value) {
     return calculateTime(() -> list
             .add(0,  value));
