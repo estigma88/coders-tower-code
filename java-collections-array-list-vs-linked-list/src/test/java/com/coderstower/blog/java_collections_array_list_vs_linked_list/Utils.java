@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
-  static final int amountData = 10000000;
-  static final int amountIterations = 10;
+  public static final int amountData = 10000000;
+  public static final int amountIterations = 10;
 
-  static Collection<Integer> populate(int amount) {
+  public static Collection<Integer> populate(int amount) {
     return new Random()
             .ints()
             .limit(amount)
@@ -17,7 +17,7 @@ public class Utils {
             .collect(Collectors.toList());
   }
 
-  static void printResults(String operation,
+  public static void printResults(String operation,
                             long arrayListTime,
                             long linkedListTime) {
     System.out.println(
@@ -32,12 +32,12 @@ public class Utils {
                     linkedListTime)));
   }
 
-  static float calculateAverage(
+  public static float calculateAverage(
           long totalTime) {
     return totalTime / (float) amountIterations;
   }
 
-  static long calculateTime(Runnable runnable) {
+  public static long calculateTime(Runnable runnable) {
     long start = System.nanoTime();
     runnable.run();
     long end = System.nanoTime();

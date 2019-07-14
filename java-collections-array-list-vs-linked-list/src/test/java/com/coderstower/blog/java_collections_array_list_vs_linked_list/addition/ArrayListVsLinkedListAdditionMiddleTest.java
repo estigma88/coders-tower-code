@@ -1,4 +1,4 @@
-package com.coderstower.blog.java_collections_array_list_vs_linked_list;
+package com.coderstower.blog.java_collections_array_list_vs_linked_list.addition;
 
 
 import org.junit.Test;
@@ -11,9 +11,10 @@ import java.util.List;
 import static com.coderstower.blog.java_collections_array_list_vs_linked_list.Utils.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ArrayListVsLinkedListAdditionEndTest {
+public class ArrayListVsLinkedListAdditionMiddleTest {
+
   @Test
-  public void add_end() {
+  public void add_middle() {
     long arrayListTime = 0;
     long linkedListTime = 0;
     int valueAdded = amountData / 2;
@@ -26,12 +27,13 @@ public class ArrayListVsLinkedListAdditionEndTest {
       LinkedList<Integer> linkedList = new LinkedList<>(
               data);
 
-      arrayListTime += addToEnd(arrayList, valueAdded);
-      linkedListTime += addToEnd(linkedList,
+      arrayListTime += addToMiddle(arrayList,
+              valueAdded);
+      linkedListTime += addToMiddle(linkedList,
               valueAdded);
     }
 
-    printResults("AddToEnd", arrayListTime,
+    printResults("AddToMiddle", arrayListTime,
             linkedListTime);
 
     assertThat(calculateAverage(linkedListTime))
@@ -39,9 +41,9 @@ public class ArrayListVsLinkedListAdditionEndTest {
                     calculateAverage(arrayListTime));
   }
 
-  private long addToEnd(List<Integer> list,
-                        Integer value) {
+  private long addToMiddle(List<Integer> list,
+                           Integer value) {
     return calculateTime(() -> list
-            .add(value));
+            .add(value, value));
   }
 }
