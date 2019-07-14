@@ -4,14 +4,11 @@ package com.coderstower.blog.java_collections_array_list_vs_linked_list;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
+import static com.coderstower.blog.java_collections_array_list_vs_linked_list.Utils.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ArrayListVsLinkedListTest {
-  private final int amountData = 10000000;
-  private final int amountIterations = 10;
-
   @Test
   public void add_end() {
     long arrayListTime = 0;
@@ -304,31 +301,4 @@ public class ArrayListVsLinkedListTest {
             .sort(Comparator.naturalOrder()));
   }
 
-  private Collection<Integer> populate(int amount) {
-    return new Random()
-            .ints()
-            .limit(amount)
-            .boxed()
-            .collect(Collectors.toList());
-  }
-
-  private void printResults(String operation,
-                            long arrayListTime,
-                            long linkedListTime) {
-    System.out.println(
-            "[" + operation + "] Amount Data: " + amountData);
-    System.out.println(
-            "[" + operation + "] Amount Iterations: " + amountIterations);
-    System.out.println(
-            "[" + operation + "] Average ArrayList (ms): " + (arrayListTime / (float) amountIterations));
-    System.out.println(
-            "[" + operation + "] Average LinkedList (ms): " + (linkedListTime / (float) amountIterations));
-  }
-
-  private long calculateTime(Runnable runnable) {
-    long start = System.nanoTime();
-    runnable.run();
-    long end = System.nanoTime();
-    return (end - start) / 1000000;
-  }
 }
