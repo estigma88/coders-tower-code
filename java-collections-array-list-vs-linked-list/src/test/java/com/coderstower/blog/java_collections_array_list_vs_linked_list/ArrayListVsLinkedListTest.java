@@ -1,6 +1,7 @@
 package com.coderstower.blog.java_collections_array_list_vs_linked_list;
 
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.*;
@@ -8,6 +9,7 @@ import java.util.*;
 import static com.coderstower.blog.java_collections_array_list_vs_linked_list.Utils.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Ignore
 public class ArrayListVsLinkedListTest {
   @Test
   public void add_end() {
