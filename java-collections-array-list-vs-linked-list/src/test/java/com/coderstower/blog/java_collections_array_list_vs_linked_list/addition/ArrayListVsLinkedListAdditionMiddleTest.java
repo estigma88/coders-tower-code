@@ -31,7 +31,7 @@ public class ArrayListVsLinkedListAdditionMiddleTest {
 
     Options opt = new OptionsBuilder()
             .include(
-                    ArrayListVsLinkedListAdditionEndTest.class
+                    ArrayListVsLinkedListAdditionMiddleTest.class
                             .getSimpleName())
             .detectJvmArgs()
             .build();

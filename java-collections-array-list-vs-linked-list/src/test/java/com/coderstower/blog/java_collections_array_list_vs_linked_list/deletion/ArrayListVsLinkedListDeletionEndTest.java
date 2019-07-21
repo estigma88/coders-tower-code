@@ -1,10 +1,9 @@
-package com.coderstower.blog.java_collections_array_list_vs_linked_list.addition;
+package com.coderstower.blog.java_collections_array_list_vs_linked_list.deletion;
 
 
 import com.coderstower.blog.java_collections_array_list_vs_linked_list.ArrayListExecutionPlan;
 import com.coderstower.blog.java_collections_array_list_vs_linked_list.LinkedListExecutionPlan;
 import com.coderstower.blog.java_collections_array_list_vs_linked_list.Utils;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.results.Result;
@@ -18,22 +17,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static com.coderstower.blog.java_collections_array_list_vs_linked_list.Utils.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ArrayListVsLinkedListAdditionStartTest {
 
+public class ArrayListVsLinkedListDeletionEndTest {
   @Test
-  public void add_start()
+  public void remove_end()
           throws RunnerException, IOException {
     Utils.populateToFile();
 
     Options opt = new OptionsBuilder()
             .include(
-                    ArrayListVsLinkedListAdditionStartTest.class
+                    ArrayListVsLinkedListDeletionEndTest.class
                             .getSimpleName())
             .detectJvmArgs()
             .build();
@@ -62,7 +59,7 @@ public class ArrayListVsLinkedListAdditionStartTest {
           ArrayListExecutionPlan executionPlan) {
     ArrayList<Integer> list = executionPlan.arrayList;
 
-    list.add(0, executionPlan.element);
+    list.remove(list.size() - 1);
 
     return list;
   }
@@ -77,7 +74,7 @@ public class ArrayListVsLinkedListAdditionStartTest {
           LinkedListExecutionPlan executionPlan) {
     LinkedList<Integer> list = executionPlan.linkedList;
 
-    list.add(0, executionPlan.element);
+    list.remove(list.size() - 1);
 
     return list;
   }
