@@ -27,20 +27,24 @@ public class ArrayListVsLinkedListAdditionEndTest {
   public void add_end()
           throws RunnerException, IOException {
     Utils.populateToFile();
+
     Options opt = new OptionsBuilder()
             .include(
                     ArrayListVsLinkedListAdditionEndTest.class
                             .getSimpleName())
             .detectJvmArgs()
             .build();
+
     Collection<RunResult> runResults = new Runner(opt)
             .run();
+
     Result arrayListResult = Utils
             .find("arrayList",
                     runResults);
     Result linkedListResult = Utils
             .find("linkedList",
                     runResults);
+
     assertThat(linkedListResult.getScore())
             .isLessThan(arrayListResult.getScore());
   }
@@ -54,7 +58,9 @@ public class ArrayListVsLinkedListAdditionEndTest {
   public ArrayList<Integer> arrayList(
           ArrayListExecutionPlan executionPlan) {
     ArrayList<Integer> list = executionPlan.arrayList;
+
     list.add(executionPlan.element);
+
     return list;
   }
 
@@ -67,7 +73,9 @@ public class ArrayListVsLinkedListAdditionEndTest {
   public LinkedList<Integer> linkedList(
           LinkedListExecutionPlan executionPlan) {
     LinkedList<Integer> list = executionPlan.linkedList;
+
     list.add(executionPlan.element);
+
     return list;
   }
 }
