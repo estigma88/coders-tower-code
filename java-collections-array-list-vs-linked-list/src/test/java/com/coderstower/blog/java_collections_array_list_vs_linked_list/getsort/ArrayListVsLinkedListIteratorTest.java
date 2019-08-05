@@ -63,6 +63,12 @@ public class ArrayListVsLinkedListIteratorTest {
     for(Integer integer : list){
     }
 
+    /*
+    for(Iterator<Integer> i = list.iterator(); i.hasNext(); ) {
+      Integer item = i.next();
+    }
+    */
+
     return list;
   }
 
@@ -78,6 +84,12 @@ public class ArrayListVsLinkedListIteratorTest {
 
     for(Integer integer : list){
     }
+
+    /*
+    for(Iterator<Integer> i = list.iterator(); i.hasNext(); ) {
+      Integer item = i.next();
+    }
+    */
 
     return list;
   }
