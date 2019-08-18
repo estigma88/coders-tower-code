@@ -1,9 +1,10 @@
-package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.notdd;
+package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.tdd.step3;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringJoiner;
 
-public class Person {
+class Person {
   private String name;
   private String address;
   private LocalDate birthDate;
@@ -52,13 +53,23 @@ public class Person {
                     .equals(address, person.address) &&
             Objects.equals(birthDate,
                     person.birthDate) &&
-            Objects
-                    .equals(phone, person.phone);
+            Objects.equals(phone, person.phone);
   }
 
   @Override
   public int hashCode() {
     return Objects
             .hash(name, address, birthDate, phone);
+  }
+
+  @Override
+  public String toString() {
+    return new StringJoiner(", ",
+            Person.class.getSimpleName() + "[", "]")
+            .add("name='" + name + "'")
+            .add("address='" + address + "'")
+            .add("birthDate=" + birthDate)
+            .add("phone='" + phone + "'")
+            .toString();
   }
 }

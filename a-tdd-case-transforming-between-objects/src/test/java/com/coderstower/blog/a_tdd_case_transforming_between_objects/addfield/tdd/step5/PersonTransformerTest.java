@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.tdd;
+package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.tdd.step5;
 
 import org.junit.Test;
 
@@ -15,14 +15,14 @@ public class PersonTransformerTest {
     person.setAddress("Street 1");
     person.setBirthDate(LocalDate.of(1980, 7, 4));
     person.setName("Daniel");
-    person.setPhone("5552368");
+    person.setPhone("111111");
 
     PersonDTO personDTOExpected = new PersonDTO();
     personDTOExpected.setAddress("Street 1");
     personDTOExpected
             .setBirthDate(LocalDate.of(1980, 7, 4));
     personDTOExpected.setName("Daniel");
-    personDTOExpected.setPhone("5552368");
+    personDTOExpected.setPhone("111111");
 
     PersonDTO personDTO = personTransformer
             .transform(person);
@@ -36,14 +36,14 @@ public class PersonTransformerTest {
     personDTO.setAddress("Street 1");
     personDTO.setBirthDate(LocalDate.of(1980, 7, 4));
     personDTO.setName("Daniel");
-    personDTO.setPhone("5552368");
+    personDTO.setPhone("111111");
 
     Person personExpected = new Person();
     personExpected.setAddress("Street 1");
     personExpected
             .setBirthDate(LocalDate.of(1980, 7, 4));
     personExpected.setName("Daniel");
-    personExpected.setPhone("5552368");
+    personExpected.setPhone("111111");
 
     Person person = personTransformer
             .transform(personDTO);

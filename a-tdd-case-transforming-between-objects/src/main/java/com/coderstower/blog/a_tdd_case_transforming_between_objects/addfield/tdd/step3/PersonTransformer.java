@@ -1,7 +1,8 @@
-package com.coderstower.blog.a_tdd_case_transforming_between_objects.base;
+package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.tdd.step3;
 
 class PersonTransformer {
-  public Person transform(PersonDTO personDTO){
+  public Person transform(
+          PersonDTO personDTO){
     Person person = new Person();
     person.setAddress(personDTO.getAddress());
     person.setBirthDate(personDTO.getBirthDate());
@@ -10,7 +11,8 @@ class PersonTransformer {
     return person;
   }
 
-  public PersonDTO transform(Person person){
+  public PersonDTO transform(
+          Person person){
     PersonDTO personDTO = new PersonDTO();
     personDTO.setAddress(person.getAddress());
     personDTO.setBirthDate(person.getBirthDate());

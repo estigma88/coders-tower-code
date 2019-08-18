@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_tdd_case_transforming_between_objects.base;
+package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.tdd.step1;
 
 class PersonTransformer {
   public Person transform(PersonDTO personDTO){

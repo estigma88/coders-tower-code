@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_tdd_case_transforming_between_objects.base;
+package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.notdd.step3;
 
 class PersonTransformer {
   public Person transform(PersonDTO personDTO){
@@ -6,6 +6,7 @@ class PersonTransformer {
     person.setAddress(personDTO.getAddress());
     person.setBirthDate(personDTO.getBirthDate());
     person.setName(personDTO.getName());
+    person.setPhone(personDTO.getPhone());
 
     return person;
   }
@@ -15,6 +16,7 @@ class PersonTransformer {
     personDTO.setAddress(person.getAddress());
     personDTO.setBirthDate(person.getBirthDate());
     personDTO.setName(person.getName());
+    personDTO.setPhone(person.getPhone());
 
     return personDTO;
   }

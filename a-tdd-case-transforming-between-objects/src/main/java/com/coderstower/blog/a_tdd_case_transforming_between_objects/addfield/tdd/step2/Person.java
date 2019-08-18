@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_tdd_case_transforming_between_objects.base;
+package com.coderstower.blog.a_tdd_case_transforming_between_objects.addfield.tdd.step2;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -8,6 +8,7 @@ class Person {
   private String name;
   private String address;
   private LocalDate birthDate;
+  private String phone;
 
   public String getName() {
     return name;
@@ -33,6 +34,14 @@ class Person {
     this.birthDate = birthDate;
   }
 
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -42,14 +51,14 @@ class Person {
     return Objects.equals(name, person.name) &&
             Objects
                     .equals(address, person.address) &&
-            Objects
-                    .equals(birthDate,
-                            person.birthDate);
+            Objects.equals(birthDate,
+                    person.birthDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, address, birthDate);
+    return Objects
+            .hash(name, address, birthDate);
   }
 
   @Override
@@ -59,6 +68,7 @@ class Person {
             .add("name='" + name + "'")
             .add("address='" + address + "'")
             .add("birthDate=" + birthDate)
+            .add("phone='" + phone + "'")
             .toString();
   }
 }
