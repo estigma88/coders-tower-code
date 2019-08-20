@@ -34,10 +34,6 @@ class PersonDTO {
     this.birthDate = birthDate;
   }
 
-  public String getPhone() {
-    return phone;
-  }
-
   public void setPhone(String phone) {
     this.phone = phone;
   }

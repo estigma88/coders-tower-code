@@ -25,22 +25,4 @@ public class PersonTransformerTest {
 
     assertThat(personDTO).isEqualTo(personDTOExpected);
   }
-
-  @Test
-  public void transformFromPersonDTOToPerson(){
-    PersonDTO personDTO = new PersonDTO();
-    personDTO.setAddress("Street 1");
-    personDTO.setBirthDate(LocalDate.of(1980, 7, 4));
-    personDTO.setName("Daniel");
-
-    Person personExpected = new Person();
-    personExpected.setAddress("Street 1");
-    personExpected.setBirthDate(LocalDate.of(1980, 7, 4));
-    personExpected.setName("Daniel");
-
-    Person person = personTransformer
-            .transform(personDTO);
-
-    assertThat(person).isEqualTo(personExpected);
-  }
 }

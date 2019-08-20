@@ -52,15 +52,13 @@ class Person {
             Objects
                     .equals(address, person.address) &&
             Objects.equals(birthDate,
-                    person.birthDate) &&
-            Objects
-                    .equals(phone, person.phone);
+                    person.birthDate);
   }
 
   @Override
   public int hashCode() {
     return Objects
-            .hash(name, address, birthDate, phone);
+            .hash(name, address, birthDate);
   }
 
   @Override

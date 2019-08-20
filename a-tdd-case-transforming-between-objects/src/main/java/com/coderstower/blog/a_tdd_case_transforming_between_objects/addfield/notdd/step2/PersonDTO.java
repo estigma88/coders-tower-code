@@ -61,7 +61,7 @@ class PersonDTO {
   @Override
   public int hashCode() {
     return Objects
-            .hash(name, address, birthDate, phone);
+            .hash(name, address, birthDate);
   }
 
   @Override
