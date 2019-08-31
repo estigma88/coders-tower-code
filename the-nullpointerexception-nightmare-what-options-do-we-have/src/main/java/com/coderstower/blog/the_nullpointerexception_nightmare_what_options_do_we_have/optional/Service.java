@@ -15,8 +15,7 @@ class Service {
         List<String> users = this.repository.findAllIds();
 
         for (String id : users) {
-            Optional<User> userComplete = this.repository.findById(id)
-                    .filter(Objects::nonNull);
+            Optional<User> userComplete = this.repository.findById(id);
 
             if(userComplete.isPresent()){
                 return userComplete;
