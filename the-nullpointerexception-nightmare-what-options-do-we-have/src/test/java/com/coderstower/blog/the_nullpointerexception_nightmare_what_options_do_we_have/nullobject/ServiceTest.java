@@ -14,28 +14,32 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceTest {
-    @Mock
-    private Repository repository;
-    @InjectMocks
-    private Service service;
+  @Mock
+  private Repository repository;
+  @InjectMocks
+  private Service service;
 
-    @Test
-    public void getByName_nullList_nullPointerException(){
-        when(repository.findAllIds()).thenReturn(Collections.emptyList());
+  @Test
+  public void getByName_nullList_nullPointerException() {
+    when(repository.findAllIds())
+            .thenReturn(Collections.emptyList());
 
-        User user = service.getByName("name");
+    User user = service.getByName("name");
 
-        assertThat(user).isEqualTo(NullUser.INSTANCE);
-    }
+    assertThat(user).isEqualTo(NullUser.INSTANCE);
+  }
 
-    @Test
-    public void getByName_nullUser_nullPointerException(){
-        when(repository.findAllIds()).thenReturn(Arrays.asList("1", "2"));
-        when(repository.findById("1")).thenReturn(NullUser.INSTANCE);
-        when(repository.findById("2")).thenReturn(NullUser.INSTANCE);
+  @Test
+  public void getByName_nullUser_nullPointerException() {
+    when(repository.findAllIds())
+            .thenReturn(Arrays.asList("1", "2"));
+    when(repository.findById("1"))
+            .thenReturn(NullUser.INSTANCE);
+    when(repository.findById("2"))
+            .thenReturn(NullUser.INSTANCE);
 
-        User user = service.getByName("name");
+    User user = service.getByName("name");
 
-        assertThat(user).isEqualTo(NullUser.INSTANCE);
-    }
+    assertThat(user).isEqualTo(NullUser.INSTANCE);
+  }
 }
