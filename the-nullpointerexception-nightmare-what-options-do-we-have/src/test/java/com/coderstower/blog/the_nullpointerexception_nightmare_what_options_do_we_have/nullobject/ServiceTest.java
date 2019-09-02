@@ -25,17 +25,17 @@ public class ServiceTest {
 
         User user = service.getByName("name");
 
-        assertThat(user).isEqualTo(User.NULL);
+        assertThat(user).isEqualTo(NullUser.INSTANCE);
     }
 
     @Test
     public void getByName_nullUser_nullPointerException(){
         when(repository.findAllIds()).thenReturn(Arrays.asList("1", "2"));
-        when(repository.findById("1")).thenReturn(User.NULL);
-        when(repository.findById("2")).thenReturn(User.NULL);
+        when(repository.findById("1")).thenReturn(NullUser.INSTANCE);
+        when(repository.findById("2")).thenReturn(NullUser.INSTANCE);
 
         User user = service.getByName("name");
 
-        assertThat(user).isEqualTo(User.NULL);
+        assertThat(user).isEqualTo(NullUser.INSTANCE);
     }
 }

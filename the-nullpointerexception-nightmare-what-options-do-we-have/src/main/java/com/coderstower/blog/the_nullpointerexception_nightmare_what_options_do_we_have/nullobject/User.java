@@ -3,8 +3,6 @@ package com.coderstower.blog.the_nullpointerexception_nightmare_what_options_do_
 import java.util.Objects;
 
 class User{
-    static final User NULL = new User("null", "null");
-
     private final String id;
     private final String name;
 

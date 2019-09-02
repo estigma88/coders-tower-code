@@ -20,6 +20,6 @@ class Service {
             }
         }
 
-        return User.NULL;
+        return NullUser.INSTANCE;
     }
 }
