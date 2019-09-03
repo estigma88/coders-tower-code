@@ -43,4 +43,18 @@ public class ServiceTest {
 
     assertThat(user).isEqualTo(Optional.empty());
   }
+
+  @Test
+  public void getByName_user_found() {
+    when(repository.findAllIds())
+            .thenReturn(Arrays.asList("1", "2"));
+    when(repository.findById("1"))
+            .thenReturn(Optional.empty());
+    when(repository.findById("2"))
+            .thenReturn(Optional.of(new User("2", "name")));
+
+    Optional<User> user = service.getByName("name");
+
+    assertThat(user).isEqualTo(Optional.of(new User("2", "name")));
+  }
 }
