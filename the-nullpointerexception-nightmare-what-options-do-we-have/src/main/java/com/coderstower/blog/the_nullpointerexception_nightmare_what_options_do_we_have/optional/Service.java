@@ -15,7 +15,8 @@ class Service {
 
     for (String id : users) {
       Optional<User> userComplete = this.repository
-              .findById(id);
+              .findById(id)
+              .filter(u -> u.getName().equals(name));
 
       if (userComplete.isPresent()) {
         return userComplete;
