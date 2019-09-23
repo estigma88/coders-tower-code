@@ -1,20 +1,23 @@
 package com.coderstower.blog.unit_testing_behavior_vs_state.step4;
 
+import java.time.LocalDateTime;
+
 class Service {
   private final Repository repository;
-  private final TimeHandler timeHandler;
 
   public Service(
-          Repository repository,
-          TimeHandler timeHandler) {
+          Repository repository) {
     this.repository = repository;
-    this.timeHandler = timeHandler;
   }
 
   public User save(
           User user){
-    user.setCreatedAt(timeHandler.now());
+    user.setCreatedAt(getNow());
 
     return repository.save(user);
+  }
+
+  LocalDateTime getNow() {
+    return LocalDateTime.now();
   }
 }

@@ -1,23 +1,22 @@
-package com.coderstower.blog.unit_testing_behavior_vs_state.step4;
+package com.coderstower.blog.unit_testing_behavior_vs_state.step5;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceTest {
   @Mock
   private Repository repository;
-  @Spy
+  @Mock
+  private TimeHandler timeHandler;
   @InjectMocks
   private Service service;
 
@@ -30,7 +29,8 @@ public class ServiceTest {
     User userExpected = new User(null, "Daniel",
             createdAtExpected);
 
-    doReturn(createdAtExpected).when(service).getNow();
+    when(timeHandler.now())
+            .thenReturn(createdAtExpected);
     when(repository.save(user)).thenReturn(user);
 
     User userSaved = service.save(user);
