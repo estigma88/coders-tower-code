@@ -16,7 +16,7 @@ public class ServiceTest {
   @Mock
   private Repository repository;
   @Mock
-  private TimeHandler timeHandler;
+  private DateTimeHandler dateTimeHandler;
   @InjectMocks
   private Service service;
 
@@ -29,7 +29,7 @@ public class ServiceTest {
     User userExpected = new User(null, "Daniel",
             createdAtExpected);
 
-    when(timeHandler.now())
+    when(dateTimeHandler.now())
             .thenReturn(createdAtExpected);
     when(repository.save(user)).thenReturn(user);
 
