@@ -21,9 +21,15 @@ public class ServiceTest {
 
   @Test
   public void save(){
+    //Given
+
     User user = mock(User.class);
 
+    //When
+
     User userSaved = service.save(user);
+
+    //Then
 
     verify(user).setCreatedAt(any(LocalDateTime.class));
     verify(repository).save(user);

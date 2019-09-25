@@ -25,6 +25,8 @@ public class ServiceTest {
 
   @Test
   public void save() throws Exception {
+    //Given
+
     User user = new User(null, "Daniel", null);
 
     LocalDateTime createdAtExpected = LocalDateTime
@@ -37,7 +39,11 @@ public class ServiceTest {
 
     when(repository.save(user)).thenReturn(user);
 
+    //When
+
     User userSaved = service.save(user);
+
+    //Then
 
     assertThat(userSaved).isEqualTo(
             userExpected);

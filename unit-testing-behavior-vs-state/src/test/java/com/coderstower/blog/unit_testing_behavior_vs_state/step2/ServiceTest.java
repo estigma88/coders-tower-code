@@ -21,11 +21,17 @@ public class ServiceTest {
 
   @Test
   public void save(){
+    //Given
+
     User user = new User(null, "Daniel", null);
 
     when(repository.save(user)).thenReturn(user);
 
+    //When
+
     User userSaved = service.save(user);
+
+    //Then
 
     assertThat(userSaved.getCreatedAt()).isNotNull();
     //assertThat(userSaved.getCreatedAt()).isEqualTo(
