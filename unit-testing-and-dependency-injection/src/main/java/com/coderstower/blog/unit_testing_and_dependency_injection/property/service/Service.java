@@ -12,7 +12,6 @@ class Service {
   @Value("${service.url}")
   private String url;
 
-
   public User save(User user){
     return restTemplate.postForObject(url, user, User.class);
   }

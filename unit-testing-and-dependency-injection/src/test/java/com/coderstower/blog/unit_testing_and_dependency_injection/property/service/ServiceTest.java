@@ -44,5 +44,4 @@ public class ServiceTest {
 
     assertThat(result).isEqualTo(user);
   }
-
 }
