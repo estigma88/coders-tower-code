@@ -1,4 +1,4 @@
-package com.coderstower.blog.dont_let_the_unit_tests_coverage_cheat_you.step3;
+package com.coderstower.blog.dont_let_the_unit_tests_coverage_cheat_you.step4;
 
 import org.junit.Rule;
 import org.junit.Test;
