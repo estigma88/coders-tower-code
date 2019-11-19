@@ -27,5 +27,4 @@ public class UUIDKeyGeneratorTest {
 
     assertThat(id).isEqualTo(uuid.toString());
   }
-
 }

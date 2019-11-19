@@ -1,4 +1,4 @@
-package com.coderstower.blog.composition_inheritance_unit_testing.step2;
+package com.coderstower.blog.composition_inheritance_unit_testing.step3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

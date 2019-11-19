@@ -31,5 +31,4 @@ public class UserServiceTest {
 
     assertThat(newUser).isEqualTo(expectedUser);
   }
-
 }
