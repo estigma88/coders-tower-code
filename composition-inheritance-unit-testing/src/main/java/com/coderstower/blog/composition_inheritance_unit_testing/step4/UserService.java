@@ -1,17 +1,18 @@
 package com.coderstower.blog.composition_inheritance_unit_testing.step4;
 
-class BasicService implements
+class UserService implements
         Service<User> {
   private final UserRepository repository;
   private final KeyGenerator keyGenerator;
 
-  public BasicService(
+  public UserService(
           UserRepository repository,
           KeyGenerator keyGenerator) {
     this.repository = repository;
     this.keyGenerator = keyGenerator;
   }
 
+  @Override
   public User save(
           User user) {
     user.setId(keyGenerator.generateId());

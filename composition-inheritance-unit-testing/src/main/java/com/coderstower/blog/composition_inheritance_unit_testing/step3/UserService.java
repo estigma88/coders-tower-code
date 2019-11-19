@@ -1,9 +1,9 @@
 package com.coderstower.blog.composition_inheritance_unit_testing.step3;
 
-class BasicService extends AbstractService<User> {
+class UserService extends AbstractService<User> {
   private final UserRepository repository;
 
-  public BasicService(UserRepository repository) {
+  public UserService(UserRepository repository) {
     this.repository = repository;
   }
 
@@ -16,6 +16,7 @@ class BasicService extends AbstractService<User> {
     return super.generateId();
   }
 
+  @Override
   public User save(User user) {
     user.setId(generateId());
 

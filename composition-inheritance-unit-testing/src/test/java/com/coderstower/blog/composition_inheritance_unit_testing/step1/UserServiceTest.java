@@ -1,4 +1,4 @@
-package com.coderstower.blog.composition_inheritance_unit_testing.step2;
+package com.coderstower.blog.composition_inheritance_unit_testing.step1;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,29 +7,32 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.UUID;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BasicServiceTest {
+public class UserServiceTest {
   @Mock
   private UserRepository userRepository;
   @InjectMocks
   @Spy
-  private BasicService basicService;
+  private UserService userService;
 
   @Test
   public void save_newId_saved(){
-    User user = new User(null, "myName");
-    User expectedUser = new User("newId", "myName");
+    UUID uuid = UUID.randomUUID();
 
-    doReturn("newId").when(basicService).generateId();
+    User user = new User(null, "myName");
+    User expectedUser = new User(uuid.toString(), "myName");
+
+    doReturn(uuid).when(userService).getUUID();
     when(userRepository.save(expectedUser)).thenReturn(expectedUser);
 
-    User newUser = basicService.save(user);
+    User newUser = userService.save(user);
 
     assertThat(newUser).isEqualTo(expectedUser);
   }
-
 }
