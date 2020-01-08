@@ -15,7 +15,7 @@ public class ResumeTemplateProcess {
           Map<String, Object> data) {
 
     if (!isValid(data)) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("Not valid data for resume");
     }
 
     data.put("currentDate", LocalDateTime.now());
