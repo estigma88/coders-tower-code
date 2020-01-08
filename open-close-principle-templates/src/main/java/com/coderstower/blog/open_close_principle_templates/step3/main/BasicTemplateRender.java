@@ -1,6 +1,6 @@
-package com.coderstower.blog.open_close_principle_templates.step1.main;
+package com.coderstower.blog.open_close_principle_templates.step3.main;
 
-import com.coderstower.blog.open_close_principle_templates.step1.abstraction.TemplateRender;
+import com.coderstower.blog.open_close_principle_templates.step3.abstraction.TemplateRender;
 
 import java.util.Map;
 

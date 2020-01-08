@@ -31,7 +31,7 @@ public class ResumeTemplateProcess {
 
   public String processResumeLongTemplate(
           Map<String, Object> data) {
-    if (!isValidResume(data)) {
+    if (!isValidResumeLong(data)) {
       throw new IllegalArgumentException("Not valid data for resume long");
     }
 
