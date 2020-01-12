@@ -11,45 +11,49 @@ public class TemplateProcess {
     this.templateRender = templateRender;
   }
 
-  private boolean isValidResume(
-          Map<String, Object> data) {
-    return data != null && !data.isEmpty() && data
-            .containsKey("personName");
-  }
-
-  private boolean isValidResumeLong(
-          Map<String, Object> data) {
-    return data != null && !data.isEmpty() && data
-            .containsKey("personName") && data
-            .containsKey("description");
-  }
-
   public String processTemplate(String templateName,
                                 Map<String, Object> data) {
-    if (templateName.equals("resumeLong")) {
-      if (!isValidResumeLong(data)) {
+    if (templateName.equals("longResume")) {
+      if (!isValidLongResume(data)) {
         throw new IllegalArgumentException(
-                "Not valid data for resume long");
+                "Not valid data for long resume");
       }
-      data.put("currentDate",
+
+      data.put("validUntil",
               LocalDateTime.now().plusDays(7));
+
       return templateRender
-              .render("resumeLongTemplate.template",
+              .render("longResumeTemplate.template",
                       data);
     } else {
-      if (templateName.equals("resume")) {
-        if (!isValidResume(data)) {
+      if (templateName.equals("basicResume")) {
+        if (!isValidBasicResume(data)) {
           throw new IllegalArgumentException(
                   "Not valid data for resume");
         }
-        data.put("currentDate", LocalDateTime.now());
+
+        data.put("validUntil", LocalDateTime.now());
+
         return templateRender
-                .render("resumeTemplate.template",
+                .render("basicResumeTemplate.template",
                         data);
       }else{
         throw new IllegalArgumentException(
                 "Template not supported: " + templateName);
       }
     }
+  }
+
+  private boolean isValidBasicResume(
+          Map<String, Object> data) {
+    return data != null && !data.isEmpty() && data
+            .containsKey("personName");
+  }
+
+  private boolean isValidLongResume(
+          Map<String, Object> data) {
+    return data != null && !data.isEmpty() && data
+            .containsKey("personName") && data
+            .containsKey("description");
   }
 }

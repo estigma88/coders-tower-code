@@ -4,12 +4,12 @@ import com.coderstower.blog.open_close_principle_templates.step4.abstraction.Tem
 import com.coderstower.blog.open_close_principle_templates.step4.abstraction.TemplateRender;
 import com.coderstower.blog.open_close_principle_templates.step4.abstraction.aggregator.DataAggregator;
 import com.coderstower.blog.open_close_principle_templates.step4.abstraction.aggregator.LongResumeDataAggregator;
-import com.coderstower.blog.open_close_principle_templates.step4.abstraction.aggregator.ResumeDataAggregator;
+import com.coderstower.blog.open_close_principle_templates.step4.abstraction.aggregator.BasicResumeDataAggregator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class TemplatesConfiguration {
+public class TemplatesFactory {
   @Bean
   public TemplateProcess resumeTemplateProcess(
           TemplateRender templateRender,
@@ -22,7 +22,7 @@ public class TemplatesConfiguration {
 
   @Bean
   public DataAggregator resumeDataAggregator() {
-    return new ResumeDataAggregator();
+    return new BasicResumeDataAggregator();
   }
 
   @Bean

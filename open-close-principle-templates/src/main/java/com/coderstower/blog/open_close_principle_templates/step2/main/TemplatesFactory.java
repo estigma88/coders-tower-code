@@ -1,12 +1,12 @@
-package com.coderstower.blog.open_close_principle_templates.step1.main;
+package com.coderstower.blog.open_close_principle_templates.step2.main;
 
-import com.coderstower.blog.open_close_principle_templates.step1.abstraction.ResumeTemplateProcess;
-import com.coderstower.blog.open_close_principle_templates.step1.abstraction.TemplateRender;
+import com.coderstower.blog.open_close_principle_templates.step2.abstraction.ResumeTemplateProcess;
+import com.coderstower.blog.open_close_principle_templates.step2.abstraction.TemplateRender;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class TemplatesConfiguration {
+public class TemplatesFactory {
   @Bean
   public ResumeTemplateProcess resumeTemplateProcess(
           TemplateRender templateRender){

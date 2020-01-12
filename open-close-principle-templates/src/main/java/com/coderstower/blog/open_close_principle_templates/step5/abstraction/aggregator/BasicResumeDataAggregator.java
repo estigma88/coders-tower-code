@@ -3,17 +3,17 @@ package com.coderstower.blog.open_close_principle_templates.step5.abstraction.ag
 import java.time.LocalDateTime;
 import java.util.Map;
 
-public class ResumeDataAggregator implements
+public class BasicResumeDataAggregator implements
         DataAggregator {
   @Override
   public Map<String, Object> aggregate(
           Map<String, Object> data) {
     if (!isValidResume(data)) {
       throw new IllegalArgumentException(
-              "Not valid data for resume");
+              "Not valid data for basic resume");
     }
 
-    data.put("currentDate", LocalDateTime.now());
+    data.put("validUntil", LocalDateTime.now());
 
     return data;
   }

@@ -27,11 +27,11 @@ public class TemplateProcess {
               .render("resumeLongTemplate.template",
                       data);
     } else {
-      if (templateName.equals("resume")) {
+      if (templateName.equals("basicResume")) {
         data = resumeDataAggregator.aggregate(data);
 
         return templateRender
-                .render("resumeTemplate.template",
+                .render("basicResumeTemplate.template",
                         data);
       }else{
         throw new IllegalArgumentException(

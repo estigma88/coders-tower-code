@@ -9,6 +9,7 @@ public class BasicTemplateRender implements
   @Override
   public String render(String name,
                        Map<String, Object> data) {
-    return "Template to be replaced: " + name + ", with data: " + data;
+    return "Template to be replaced: " +
+            name + ", with data: " + data;
   }
 }

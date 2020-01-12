@@ -13,7 +13,7 @@ public class LongResumeDataAggregator implements
               "Not valid data for resume long");
     }
 
-    data.put("currentDate",
+    data.put("validUntil",
             LocalDateTime.now().plusDays(7));
 
     return data;

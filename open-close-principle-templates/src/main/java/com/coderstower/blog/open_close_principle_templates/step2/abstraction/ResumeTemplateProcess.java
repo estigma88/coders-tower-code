@@ -11,37 +11,37 @@ public class ResumeTemplateProcess {
     this.templateRender = templateRender;
   }
 
-  public String processResumeTemplate(
+  public String processBasicResumeTemplate(
           Map<String, Object> data) {
 
-    if (!isValidResume(data)) {
-      throw new IllegalArgumentException("Not valid data for resume");
+    if (!isValidBasicResume(data)) {
+      throw new IllegalArgumentException("Not valid data for basic resume");
     }
 
-    data.put("currentDate", LocalDateTime.now());
+    data.put("validUntil", LocalDateTime.now());
 
     return templateRender
-            .render("resumeTemplate.template", data);
+            .render("basicResumeTemplate.template", data);
   }
 
-  private boolean isValidResume(Map<String, Object> data) {
+  private boolean isValidBasicResume(Map<String, Object> data) {
     return data != null && !data.isEmpty() && data
             .containsKey("personName");
   }
 
-  public String processResumeLongTemplate(
+  public String processLongResumeTemplate(
           Map<String, Object> data) {
-    if (!isValidResumeLong(data)) {
-      throw new IllegalArgumentException("Not valid data for resume long");
+    if (!isValidLongResume(data)) {
+      throw new IllegalArgumentException("Not valid data for long resume");
     }
 
-    data.put("currentDate", LocalDateTime.now().plusDays(7));
+    data.put("validUntil", LocalDateTime.now().plusDays(7));
 
     return templateRender
-            .render("resumeLongTemplate.template", data);
+            .render("longResumeTemplate.template", data);
   }
 
-  private boolean isValidResumeLong(Map<String, Object> data) {
+  private boolean isValidLongResume(Map<String, Object> data) {
     return data != null && !data.isEmpty() && data
             .containsKey("personName") && data
             .containsKey("description");

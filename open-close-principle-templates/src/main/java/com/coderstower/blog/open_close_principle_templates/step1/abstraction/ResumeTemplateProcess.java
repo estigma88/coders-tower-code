@@ -18,7 +18,7 @@ public class ResumeTemplateProcess {
       throw new IllegalArgumentException("Not valid data for resume");
     }
 
-    data.put("currentDate", LocalDateTime.now());
+    data.put("validUntil", LocalDateTime.now());
 
     return templateRender
             .render("resumeTemplate.template", data);

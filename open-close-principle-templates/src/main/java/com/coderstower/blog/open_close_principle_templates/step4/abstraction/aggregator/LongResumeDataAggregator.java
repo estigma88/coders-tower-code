@@ -7,18 +7,18 @@ public class LongResumeDataAggregator implements DataAggregator {
   @Override
   public Map<String, Object> aggregate(
           Map<String, Object> data) {
-    if (!isValidResumeLong(data)) {
+    if (!isValidLongResume(data)) {
       throw new IllegalArgumentException(
-              "Not valid data for resume long");
+              "Not valid data for long resume");
     }
 
-    data.put("currentDate",
+    data.put("validUntil",
             LocalDateTime.now().plusDays(7));
 
     return data;
   }
 
-  private boolean isValidResumeLong(
+  private boolean isValidLongResume(
           Map<String, Object> data) {
     return data != null && !data.isEmpty() && data
             .containsKey("personName") && data
