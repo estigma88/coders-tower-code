@@ -6,6 +6,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,10 +34,17 @@ public class ClientController {
         return principal;
     }
 
+    @GetMapping("/auth2-principal")
+    public OAuth2AuthorizedClient getAuth2UserPrincipal(
+            @RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient) {
+        return authorizedClient;
+    }
+
     @GetMapping("areyouthere")
-    public String areYouThere(@AuthenticationPrincipal OidcUser principal){
+    public String areYouThere(@AuthenticationPrincipal OidcUser principal, @RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient){
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(principal.getIdToken().getTokenValue());
+        //headers.setBearerAuth(authorizedClient.getAccessToken().getTokenValue());
 
         HttpEntity<Void> entity = new HttpEntity<>(null, headers);
 
