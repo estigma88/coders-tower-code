@@ -1,23 +1,19 @@
 package com.coderstower.blog.unit_testing_vs_integration_testing.abstraction;
 
 import com.coderstower.blog.unit_testing_vs_integration_testing.abstraction.aggregator.DataAggregator;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class TemplateProcessTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException
-          .none();
   @Mock
   private TemplateRender templateRender;
   @Mock
@@ -27,15 +23,19 @@ public class TemplateProcessTest {
 
   @Test
   public void processTemplate_templateNotFound_exception() {
-    thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage(
-            "Template not supported: template1");
     TemplateProcess templateProcess = new TemplateProcess(
             templateRender,
             Map.of("template0", dataAggregator1,
                     "template2", dataAggregator2));
-    templateProcess
-            .processTemplate("template1", Map.of());
+
+    IllegalArgumentException thrown = assertThrows(
+            IllegalArgumentException.class,
+            () ->
+                    templateProcess
+                            .processTemplate("template1", Map.of()));
+
+    assertThat(thrown.getMessage()).isEqualTo(
+            "Template not supported: template1");
   }
 
   @Test

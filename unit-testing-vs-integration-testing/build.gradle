@@ -13,13 +13,46 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    intTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    intTestImplementation.extendsFrom implementation
+    intTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    intTestCompile('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testCompile 'org.mockito:mockito-junit-jupiter:2.23.0'
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.12.2'
-    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.2'
-    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.2'
-
-
 }
+
+task integrationTest(type: Test) {
+    description = 'Runs integration tests.'
+    group = 'verification'
+
+    testClassesDirs = sourceSets.intTest.output.classesDirs
+    classpath = sourceSets.intTest.runtimeClasspath
+    shouldRunAfter test
+}
+
+test {
+    useJUnitPlatform()
+}
+
+integrationTest {
+    useJUnitPlatform()
+}
+
+check.dependsOn integrationTest
