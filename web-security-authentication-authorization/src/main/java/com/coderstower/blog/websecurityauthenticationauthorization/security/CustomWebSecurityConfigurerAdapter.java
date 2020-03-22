@@ -22,7 +22,7 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("john")
-                .roles("BOYFRIEND", "CAN_MEET_PARENTS")
+                .roles("BOYFRIEND"/*, "CAN_MEET_PARENTS"*/)
                 .password(passwordEncoder().encode("honey"));
     }
 

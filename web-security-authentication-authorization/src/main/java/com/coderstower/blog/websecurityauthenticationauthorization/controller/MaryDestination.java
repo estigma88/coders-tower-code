@@ -15,7 +15,7 @@ public class MaryDestination {
     }
 
     @GetMapping("can-meet-your-parents")
-    @PreAuthorize("hasRole('ROLE_CAN_MEET_PARENTS')")
+    @PreAuthorize("hasRole('ROLE_BOYFRIEND') and hasRole('ROLE_CAN_MEET_PARENTS')")
     public String canMeetYourParents(){
         return "You can";
     }
