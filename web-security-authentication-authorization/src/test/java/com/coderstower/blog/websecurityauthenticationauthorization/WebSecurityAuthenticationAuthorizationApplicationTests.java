@@ -8,53 +8,65 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 class WebSecurityAuthenticationAuthorizationApplicationTests {
-	@Autowired
-	private MockMvc mvc;
+  @Autowired
+  private MockMvc mvc;
 
-	@Test
-	void contextLoads() {
-	}
+  @Test
+  void contextLoads() {
+  }
 
-	@Test
-	@WithMockUser(username = "ex-boyfriend", roles = { "EXBOYFRIEND" })
-	public void loveYou_unknownUser_reject() throws Exception {
-		mvc.perform(get("/love-you")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isForbidden());
-	}
+  @Test
+  @WithMockUser(username = "ex-boyfriend", roles = {
+          "EXBOYFRIEND"})
+  public void loveYou_unknownUser_reject()
+          throws Exception {
+
+    mvc.perform(get("/love-you")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isForbidden());
+  }
 
 
-	@Test
-	@WithMockUser(username = "john", roles = { "BOYFRIEND" })
-	public void loveYou_userJohn_accept() throws Exception {
-		mvc.perform(get("/love-you")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(content().string("Love you too"));
-	}
+  @Test
+  @WithMockUser(username = "john", roles = {
+          "BOYFRIEND"})
+  public void loveYou_userJohn_accept()
+          throws Exception {
 
-	@Test
-	@WithMockUser(username = "john", roles = { "BOYFRIEND" })
-	public void canMeetYourParents_userJohn_cannot() throws Exception {
-		mvc.perform(get("/can-meet-your-parents")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isForbidden());
-	}
+    mvc.perform(get("/love-you")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(
+                    content().string("Love you too"));
+  }
 
-	@Test
-	@WithMockUser(username = "john", roles = { "BOYFRIEND", "CAN_MEET_PARENTS" })
-	public void canMeetYourParents_userJohnWithRoleCAN_MEET_PARENTS_cannot() throws Exception {
-		mvc.perform(get("/can-meet-your-parents")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(content().string("You can"));
-	}
+  @Test
+  @WithMockUser(username = "john", roles = {
+          "BOYFRIEND"})
+  public void canMeetYourParents_userJohn_cannot()
+          throws Exception {
 
+    mvc.perform(get("/can-meet-your-parents")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isForbidden());
+  }
+
+  @Test
+  @WithMockUser(username = "john", roles = {
+          "BOYFRIEND", "CAN_MEET_PARENTS"})
+  public void canMeetYourParents_userJohnWithRoleCAN_MEET_PARENTS_cannot()
+          throws Exception {
+
+    mvc.perform(get("/can-meet-your-parents")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().string("You can"));
+  }
 }

@@ -8,15 +8,16 @@ import javax.annotation.security.RolesAllowed;
 
 @RestController
 public class MaryDestination {
-    @GetMapping("love-you")
-    @RolesAllowed({"ROLE_BOYFRIEND"})
-    public String loveYou(){
-        return "Love you too";
-    }
+  @GetMapping("love-you")
+  @RolesAllowed({"ROLE_BOYFRIEND"})
+  public String loveYou() {
+    return "Love you too";
+  }
 
-    @GetMapping("can-meet-your-parents")
-    @PreAuthorize("hasRole('ROLE_BOYFRIEND') and hasRole('ROLE_CAN_MEET_PARENTS')")
-    public String canMeetYourParents(){
-        return "You can";
-    }
+  @GetMapping("can-meet-your-parents")
+  @PreAuthorize("hasRole('ROLE_BOYFRIEND') and " +
+          "hasRole('ROLE_CAN_MEET_PARENTS')")
+  public String canMeetYourParents() {
+    return "You can";
+  }
 }

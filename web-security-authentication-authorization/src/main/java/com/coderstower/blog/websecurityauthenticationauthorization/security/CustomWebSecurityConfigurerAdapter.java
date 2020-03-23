@@ -17,25 +17,33 @@ import org.springframework.security.crypto.password.PasswordEncoder;
         prePostEnabled = true,
         securedEnabled = true,
         jsr250Enabled = true)
-public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("john")
-                .roles("BOYFRIEND"/*, "CAN_MEET_PARENTS"*/)
-                .password(passwordEncoder().encode("honey"));
-    }
+public class CustomWebSecurityConfigurerAdapter
+        extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
-    }
+  @Autowired
+  public void configureGlobal(
+          AuthenticationManagerBuilder auth)
+          throws Exception {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    auth.inMemoryAuthentication()
+            .withUser("john")
+            .roles("BOYFRIEND"/*, "CAN_MEET_PARENTS"*/)
+            .password(passwordEncoder()
+                    .encode("honey"));
+  }
+
+  @Override
+  protected void configure(HttpSecurity http)
+          throws Exception {
+
+    http.authorizeRequests()
+            .anyRequest().authenticated()
+            .and()
+            .httpBasic();
+  }
+
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 }
