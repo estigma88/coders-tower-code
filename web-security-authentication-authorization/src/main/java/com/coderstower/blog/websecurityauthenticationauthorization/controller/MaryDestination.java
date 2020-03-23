@@ -11,7 +11,7 @@ public class MaryDestination {
     @GetMapping("love-you")
     @RolesAllowed({"ROLE_BOYFRIEND"})
     public String loveYou(){
-        return "love you too";
+        return "Love you too";
     }
 
     @GetMapping("can-meet-your-parents")
