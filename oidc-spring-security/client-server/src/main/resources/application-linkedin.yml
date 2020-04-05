@@ -4,12 +4,11 @@ spring:
       client:
         registration:
           linkedin:
-            client-id: ----
-            client-secret: ----
+            client-id: xxx
+            client-secret: xxx
             client-authentication-method: post
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:8080/login/oauth2/code/linkedin
-
             scope:
               - r_liteprofile
               - r_emailaddress
@@ -18,3 +17,5 @@ spring:
           linkedin:
             authorization-uri: https://www.linkedin.com/oauth/v2/authorization
             token-uri: https://www.linkedin.com/oauth/v2/accessToken
+            user-info-uri: https://api.linkedin.com/v2/me
+            user-name-attribute: id

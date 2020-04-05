@@ -36,12 +36,12 @@ public class ClientController {
 
     @GetMapping("/auth2-principal")
     public OAuth2AuthorizedClient getAuth2UserPrincipal(
-            @RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient) {
+            @RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient) {
         return authorizedClient;
     }
 
     @GetMapping("areyouthere")
-    public String areYouThere(@AuthenticationPrincipal OidcUser principal, @RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient){
+    public String areYouThere(@AuthenticationPrincipal OidcUser principal, @RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient){
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(principal.getIdToken().getTokenValue());
         //headers.setBearerAuth(authorizedClient.getAccessToken().getTokenValue());
