@@ -8,7 +8,7 @@ spring:
             client-secret: xxx
             client-authentication-method: post
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/login/oauth2/code/linkedin
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
             scope:
               - r_liteprofile
               - r_emailaddress
