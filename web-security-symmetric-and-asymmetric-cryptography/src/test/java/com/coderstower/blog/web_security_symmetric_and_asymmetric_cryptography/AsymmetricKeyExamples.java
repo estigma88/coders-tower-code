@@ -9,17 +9,8 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.*;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Arrays;
 import java.util.Base64;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,20 +23,8 @@ public class AsymmetricKeyExamples {
 
   @Before
   public void before()
-          throws NoSuchAlgorithmException,
-          IOException, InvalidKeySpecException {
-    Path pathKeys = Paths.get("src", "test", "resources", "keys");
+          throws NoSuchAlgorithmException {
 
-    if(Files.exists(pathKeys)) {
-      KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-
-      X509EncodedKeySpec publicKeyEncoded = new X509EncodedKeySpec(Files.readAllBytes(pathKeys.resolve("publicKey.key")));
-      PKCS8EncodedKeySpec privateKeyEncoded = new PKCS8EncodedKeySpec(Files.readAllBytes(pathKeys.resolve("privateKey.key")));
-
-      publicKey = keyFactory.generatePublic(publicKeyEncoded);
-      privateKey = keyFactory.generatePrivate(privateKeyEncoded);
-
-    }else{
       KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
       keyGen.initialize(1024);
 
@@ -53,12 +32,6 @@ public class AsymmetricKeyExamples {
 
       privateKey = pair.getPrivate();
       publicKey = pair.getPublic();
-
-      Files.createDirectories(pathKeys);
-      Files.write(pathKeys.resolve("publicKey.key"), publicKey.getEncoded());
-      Files.write(pathKeys.resolve("privateKey.key"), privateKey.getEncoded());
-    }
-
   }
 
   @Test
