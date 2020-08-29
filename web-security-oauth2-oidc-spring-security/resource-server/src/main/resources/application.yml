@@ -6,3 +6,10 @@ spring:
           issuer-uri: https://accounts.google.com
 server:
   port: 8081
+
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          oauth2: DEBUG

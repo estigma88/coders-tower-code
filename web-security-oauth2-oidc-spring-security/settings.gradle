@@ -1,0 +1,4 @@
+rootProject.name = 'web-security-oauth2-oidc-spring-security'
+include 'client-server'
+include 'resource-server'
+

@@ -1,4 +1,0 @@
-rootProject.name = 'oidc-spring-security'
-include 'client-server'
-include 'resource-server'
-

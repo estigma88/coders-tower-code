@@ -12,8 +12,8 @@ import java.util.List;
 @RestController
 public class ResourceController {
 
-    @GetMapping("whoarethere")
-    public List<String> whoAreThere(@AuthenticationPrincipal Jwt principal) {
-        return Arrays.asList("Daniel", "Pedro", "Juan", "Jwt: " + principal.getClaims());
+    @GetMapping("enter")
+    public String enter(@AuthenticationPrincipal Jwt principal) {
+        return "Authorized: " + principal.getClaimAsString("name");
     }
 }

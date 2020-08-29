@@ -13,6 +13,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 
+/**
+ * Needed for Linkedin Authorization Server. No needed for Google Authorization Server
+ */
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -27,6 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessTokenResponseClient(authorizationCodeTokenResponseClient());
     }
 
+    /**
+     * Copy from https://github.com/jgrandja/oauth2login-demo/blob/linkedin/src/main/java/sample/web/OAuth2AccessTokenResponseConverterWithDefaults.java
+     *
+     * Linkedin token response doesn't have the tokenType property. That property is required by the specification.
+     *
+     * This Converter uses Baerer token by default
+     */
     private OAuth2AccessTokenResponseClient<OAuth2AuthorizationCodeGrantRequest> authorizationCodeTokenResponseClient() {
         OAuth2AccessTokenResponseHttpMessageConverter tokenResponseHttpMessageConverter =
                 new OAuth2AccessTokenResponseHttpMessageConverter();
