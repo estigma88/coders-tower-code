@@ -10,96 +10,118 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class DateTest {
-    @Mock
-    private DateUtils dateUtils;
+  @Mock
+  private DateUtils dateUtils;
 
-    @Test
-    public void testNow(){
-        Date now = new Date();
+  @Test
+  public void testNow() {
+    Date now = new Date();
 
-        System.out.println(now);
+    System.out.println(now);
 
-        assertNotNull(now);
-    }
+    assertNotNull(now);
+  }
 
-    @Test
-    public void testRandomDate(){
-        Date now = new Date(2020, 0,5,8,30,0);
+  @Test
+  public void testFixedDate() {
+    Date now = new Date(2020, 0, 5, 8, 30, 0);
 
-        System.out.println(now);
+    System.out.println(now);
 
-        assertEquals(now.getYear(), 2020);
-    }
+    assertEquals(now.getYear(), 2020);
+  }
 
-    @Test
-    public void testDateToString_rightFormat(){
-        Date now = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+  @Test
+  public void testAfterBeforeDate()
+          throws InterruptedException {
+    Date now = new Date();
 
-        String dateFormat = simpleDateFormat.format(now);
+    Thread.sleep(1000);
 
-        System.out.println(dateFormat);
+    Date nowAfter = new Date();
 
-        assertNotNull(dateFormat);
-    }
+    assertTrue(now.before(nowAfter));
 
-    @Test
-    public void testDateToString_wrongFormat(){
-        Date now = new Date(2020, 0,5,8,30,0);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+    assertTrue(nowAfter.after(now));
+  }
 
-        String dateFormat = simpleDateFormat.format(now);
+  @Test
+  public void testDateToString_rightFormat() {
+    Date now = new Date();
 
-        System.out.println(dateFormat);
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
-        assertEquals(dateFormat, "3920-01-05T08:30:00.000-0500");
-    }
+    String dateFormat = simpleDateFormat.format(now);
 
-    @Test
-    public void testStringToDate() throws ParseException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+    System.out.println(dateFormat);
 
-        Date date = simpleDateFormat.parse("2020-01-05T08:30:00.000-0500");
+    assertNotNull(dateFormat);
+  }
 
-        System.out.println(date);
+  @Test
+  public void testDateToString_wrongFormat() {
+    Date now = new Date(2020, 0, 5, 8, 30, 0);
 
-        assertNotNull(date);
-    }
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
-    @Test
-    public void testTimeZone() {
-        Date now = new Date();
+    String dateFormat = simpleDateFormat.format(now);
 
-        System.out.println(now.getTimezoneOffset());
+    System.out.println(dateFormat);
 
-        assertEquals(300, now.getTimezoneOffset());
-    }
+    assertEquals(dateFormat,
+            "3920-01-05T08:30:00.000-0500");
+  }
 
-    @Test
-    public void testTimeZone_changeSystemTimeZone() {
-        System.setProperty("user.timezone", "UTC");
+  @Test
+  public void testStringToDate()
+          throws ParseException {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
-        Date now = new Date();
+    Date date = simpleDateFormat
+            .parse("2020-01-05T08:30:00.000-0500");
 
-        System.out.println(now);
+    System.out.println(date);
 
-        assertNotNull(now);
-    }
+    assertNotNull(date);
+  }
 
-    @Test
-    public void testMockDate() {
-        when(dateUtils.getNow()).thenReturn(new Date(2020, 0,5,8,30,0));
+  @Test
+  public void testTimeZone() {
+    Date now = new Date();
 
-        Date now = dateUtils.getNow();
+    System.out.println(now.getTimezoneOffset());
 
-        System.out.println(now);
+    assertEquals(300, now.getTimezoneOffset());
+  }
 
-        assertEquals(now, new Date(2020, 0,5,8,30,0));
-    }
+  @Test
+  public void testTimeZone_changeSystemTimeZone() {
+    System.setProperty("user.timezone", "UTC");
+
+    Date now = new Date();
+
+    System.out.println(now);
+
+    assertNotNull(now);
+  }
+
+  @Test
+  public void testMockDate() {
+    when(dateUtils.getNow()).thenReturn(
+            new Date(2020, 0, 5, 8, 30, 0));
+
+    Date now = dateUtils.getNow();
+
+    System.out.println(now);
+
+    assertEquals(now, new Date(2020, 0, 5, 8, 30, 0));
+  }
 }

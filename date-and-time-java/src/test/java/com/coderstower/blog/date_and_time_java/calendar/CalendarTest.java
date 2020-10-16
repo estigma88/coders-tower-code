@@ -18,102 +18,133 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class CalendarTest {
-    @Mock
-    private CalendarUtils calendarUtils;
+  @Mock
+  private CalendarUtils calendarUtils;
 
-    @Test
-    public void testNow(){
-        Calendar now = Calendar.getInstance();
+  @Test
+  public void testNow() {
+    Calendar now = Calendar.getInstance();
 
-        System.out.println(now);
+    System.out.println(now);
 
-        assertNotNull(now);
-    }
+    assertNotNull(now);
+  }
 
-    @Test
-    public void testRandomDate(){
-        Calendar now = Calendar.getInstance();
-        now.set(Calendar.YEAR, 2020);
-        now.set(Calendar.MONTH, 3);
-        now.set(Calendar.DAY_OF_MONTH, 23);
-        now.set(Calendar.HOUR, 8);
-        now.set(Calendar.MINUTE, 30);
-        now.set(Calendar.MILLISECOND, 10);
+  @Test
+  public void testRandomDate() {
+    Calendar now = Calendar.getInstance();
+    now.set(Calendar.YEAR, 2020);
+    now.set(Calendar.MONTH, 3);
+    now.set(Calendar.DAY_OF_MONTH, 23);
+    now.set(Calendar.HOUR, 8);
+    now.set(Calendar.MINUTE, 30);
+    now.set(Calendar.MILLISECOND, 10);
 
-        System.out.println(now);
+    System.out.println(now);
 
-        assertEquals(now.get(Calendar.YEAR), 2020);
-    }
+    assertEquals(now.get(Calendar.YEAR), 2020);
+  }
 
-    @Test
-    public void testDateToString(){
-        Calendar now = Calendar.getInstance();
-        now.set(Calendar.YEAR, 2020);
-        now.set(Calendar.MONTH, 3);
-        now.set(Calendar.DAY_OF_MONTH, 23);
-        now.set(Calendar.HOUR, 8);
-        now.set(Calendar.MINUTE, 30);
-        now.set(Calendar.SECOND, 10);
-        now.set(Calendar.MILLISECOND, 10);
+  @Test
+  public void testOperations() {
+    Calendar now = Calendar.getInstance();
+    now.set(Calendar.YEAR, 2020);
+    now.set(Calendar.MONTH, 3);
+    now.set(Calendar.DAY_OF_MONTH, 23);
+    now.set(Calendar.HOUR, 8);
+    now.set(Calendar.MINUTE, 30);
+    now.set(Calendar.MILLISECOND, 10);
+    now.add(Calendar.MONTH, 2);
 
-        Date nowDate = now.getTime();
+    Calendar expected = Calendar.getInstance();
+    expected.set(Calendar.YEAR, 2020);
+    expected.set(Calendar.MONTH, 5);
+    expected.set(Calendar.DAY_OF_MONTH, 23);
+    expected.set(Calendar.HOUR, 8);
+    expected.set(Calendar.MINUTE, 30);
+    expected.set(Calendar.MILLISECOND, 10);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+    assertEquals(expected, now);
+  }
 
-        String dateFormat = simpleDateFormat.format(nowDate);
+  @Test
+  public void testDateToString() {
+    Calendar now = Calendar.getInstance();
+    now.set(Calendar.YEAR, 2020);
+    now.set(Calendar.MONTH, 3);
+    now.set(Calendar.DAY_OF_MONTH, 23);
+    now.set(Calendar.HOUR, 8);
+    now.set(Calendar.MINUTE, 30);
+    now.set(Calendar.SECOND, 10);
+    now.set(Calendar.MILLISECOND, 10);
 
-        System.out.println(dateFormat);
+    Date nowDate = now.getTime();
 
-        assertEquals("2020-04-23T20:30:10.010-0500", dateFormat);
-    }
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
-    @Test
-    public void testStringToDate() throws ParseException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+    String dateFormat = simpleDateFormat
+            .format(nowDate);
 
-        Date date = simpleDateFormat.parse("2020-04-23T08:30:10.010-0500");
+    System.out.println(dateFormat);
 
-        Calendar now = Calendar.getInstance();
-        now.setTime(date);
+    assertEquals("2020-04-23T20:30:10.010-0500",
+            dateFormat);
+  }
 
-        System.out.println(date);
+  @Test
+  public void testStringToDate()
+          throws ParseException {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
-        assertNotNull(now);
-    }
+    Date date = simpleDateFormat
+            .parse("2020-04-23T08:30:10.010-0500");
 
-    @Test
-    public void testTimeZone() {
-        Calendar now = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-        now.set(Calendar.YEAR, 2020);
-        now.set(Calendar.MONTH, 3);
-        now.set(Calendar.DAY_OF_MONTH, 23);
-        now.set(Calendar.HOUR, 8);
-        now.set(Calendar.MINUTE, 30);
-        now.set(Calendar.SECOND, 10);
-        now.set(Calendar.MILLISECOND, 10);
+    Calendar now = Calendar.getInstance();
 
-        System.out.println(now);
+    now.setTime(date);
 
-        assertEquals(TimeZone.getTimeZone("UTC"), now.getTimeZone());
-    }
+    System.out.println(date);
 
-    @Test
-    public void testMockDate() {
-        Calendar expected = Calendar.getInstance();
-        expected.set(Calendar.YEAR, 2020);
-        expected.set(Calendar.MONTH, 3);
-        expected.set(Calendar.DAY_OF_MONTH, 23);
-        expected.set(Calendar.HOUR, 8);
-        expected.set(Calendar.MINUTE, 30);
-        expected.set(Calendar.SECOND, 10);
-        expected.set(Calendar.MILLISECOND, 10);
+    assertNotNull(now);
+  }
 
-        when(calendarUtils.getNow()).thenReturn(expected);
-        
-        Calendar now = calendarUtils.getNow();
+  @Test
+  public void testTimeZone() {
+    Calendar now = Calendar
+            .getInstance(TimeZone.getTimeZone("UTC"));
+    now.set(Calendar.YEAR, 2020);
+    now.set(Calendar.MONTH, 3);
+    now.set(Calendar.DAY_OF_MONTH, 23);
+    now.set(Calendar.HOUR, 8);
+    now.set(Calendar.MINUTE, 30);
+    now.set(Calendar.SECOND, 10);
+    now.set(Calendar.MILLISECOND, 10);
 
-        System.out.println(now);
+    System.out.println(now);
 
-        assertEquals(expected, now);
-    }
+    assertEquals(TimeZone.getTimeZone("UTC"),
+            now.getTimeZone());
+  }
+
+  @Test
+  public void testMockDate() {
+    Calendar expected = Calendar.getInstance();
+    expected.set(Calendar.YEAR, 2020);
+    expected.set(Calendar.MONTH, 3);
+    expected.set(Calendar.DAY_OF_MONTH, 23);
+    expected.set(Calendar.HOUR, 8);
+    expected.set(Calendar.MINUTE, 30);
+    expected.set(Calendar.SECOND, 10);
+    expected.set(Calendar.MILLISECOND, 10);
+
+    when(calendarUtils.getNow()).thenReturn(expected);
+
+    Calendar now = calendarUtils.getNow();
+
+    System.out.println(now);
+
+    assertEquals(expected, now);
+  }
 }
