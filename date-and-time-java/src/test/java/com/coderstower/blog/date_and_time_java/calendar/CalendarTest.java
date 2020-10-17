@@ -54,6 +54,7 @@ public class CalendarTest {
     now.set(Calendar.HOUR, 8);
     now.set(Calendar.MINUTE, 30);
     now.set(Calendar.MILLISECOND, 10);
+
     now.add(Calendar.MONTH, 2);
 
     Calendar expected = Calendar.getInstance();
