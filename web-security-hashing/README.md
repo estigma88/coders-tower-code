@@ -1,5 +1,5 @@
-# Unit Testing: Behavior vs State
+# Web Security: Hashing
 
 **Stronger bases to grow higher**
 
-https://coderstower.com/2019/09/24/unit-testing-behavior-vs-state/
+[https://coderstower.com/2020/04/13/web-security-hashing/](https://coderstower.com/2020/04/13/web-security-hashing/)
