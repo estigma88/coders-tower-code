@@ -1,4 +1,4 @@
-package com.coderstower.blog.java_collections_array_list_vs_linked_list;
+package com.coderstower.blog.java_collections_hashmap_vs_treemap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,10 +16,6 @@ public class MapTest {
   signaturesByClassroom = new TreeMap<>();
 
     signaturesByClassroom.put("A", "Math");
-    signaturesByClassroom.put("B", "Math");
-    signaturesByClassroom.put("C", "Math");
-    signaturesByClassroom.put("D", "Math");
-    signaturesByClassroom.put("E", "Math");
   }
 
   @Test

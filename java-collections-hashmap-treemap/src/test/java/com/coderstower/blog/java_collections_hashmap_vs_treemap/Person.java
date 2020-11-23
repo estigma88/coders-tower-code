@@ -1,4 +1,4 @@
-package com.coderstower.blog.java_collections_array_list_vs_linked_list;
+package com.coderstower.blog.java_collections_hashmap_vs_treemap;
 
 import java.time.LocalDate;
 import java.util.Objects;
