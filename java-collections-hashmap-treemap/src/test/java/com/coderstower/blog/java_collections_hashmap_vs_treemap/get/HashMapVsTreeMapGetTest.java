@@ -1,6 +1,7 @@
-package com.coderstower.blog.java_collections_hashmap_vs_treemap.put;
+package com.coderstower.blog.java_collections_hashmap_vs_treemap.get;
 
 
+import com.coderstower.blog.java_collections_hashmap_vs_treemap.ExecutionPlan;
 import com.coderstower.blog.java_collections_hashmap_vs_treemap.HashMapExecutionPlan;
 import com.coderstower.blog.java_collections_hashmap_vs_treemap.TreeMapExecutionPlan;
 import com.coderstower.blog.java_collections_hashmap_vs_treemap.Utils;
@@ -14,22 +15,24 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import static com.coderstower.blog.java_collections_hashmap_vs_treemap.Utils.amountData;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class HashMapVsTreeMapPutTest {
+public class HashMapVsTreeMapGetTest {
 
   @Test
-  public void put()
+  public void get()
           throws RunnerException, IOException {
     Utils.populateToFile();
 
     Options opt = new OptionsBuilder()
             .include(
-                    HashMapVsTreeMapPutTest.class
+                    HashMapVsTreeMapGetTest.class
                             .getSimpleName())
             .detectJvmArgs()
             .build();
@@ -58,7 +61,7 @@ public class HashMapVsTreeMapPutTest {
           HashMapExecutionPlan executionPlan) {
     HashMap<Integer, Integer> hashMap = executionPlan.hashMap;
 
-    hashMap.put(amountData, amountData);
+    hashMap.get(ExecutionPlan.element);
 
     return hashMap;
   }
@@ -73,7 +76,7 @@ public class HashMapVsTreeMapPutTest {
           TreeMapExecutionPlan executionPlan) {
     TreeMap<Integer, Integer> treeMap = executionPlan.treeMap;
 
-    treeMap.put(amountData, amountData);
+    treeMap.get(ExecutionPlan.element);
 
     return treeMap;
   }

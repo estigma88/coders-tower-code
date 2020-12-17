@@ -18,7 +18,7 @@ import static com.coderstower.blog.java_collections_hashmap_vs_treemap.Utils.amo
 
 @State(Scope.Benchmark)
 public class ExecutionPlan {
-  public int element = amountData / 2;
+  public static int element = amountData / 2;
 
   public Map<Integer, Integer> randomCollection;
 
@@ -27,7 +27,7 @@ public class ExecutionPlan {
     randomCollection = Files
             .readAllLines(Paths.get(Utils.fileName))
             .stream().map(Integer::parseInt).collect(
-                    Collectors.toMap(Function.identity(), Function.identity()));
+                    Collectors.toMap(Function.identity(), Function.identity(), (a, b) -> a));
   }
 }
 
