@@ -17,6 +17,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
@@ -79,5 +80,14 @@ public class HashMapVsTreeMapGetTest {
     treeMap.get(ExecutionPlan.element);
 
     return treeMap;
+  }
+
+  @Test
+  public void hashing(){
+    System.out.println(Objects.hash("A"));
+    System.out.println(Objects.hash("B"));
+    System.out.println(Objects.hash("C"));
+    System.out.println(Objects.hash("D"));
+    System.out.println(Objects.hash("E"));
   }
 }
