@@ -1,38 +1,41 @@
 package com.coderstower.blog.future;
 
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.*;
 
 public class FutureTest {
 
-    @Test
-    public void basicFuture()
-            throws InterruptedException, ExecutionException, TimeoutException {
-        ExecutorService executor = Executors
-                .newSingleThreadExecutor();
+  @Test
+  public void basicFuture()
+          throws InterruptedException,
+          ExecutionException, TimeoutException {
+    ExecutorService executor = Executors
+            .newSingleThreadExecutor();
 
-      Future<String> future = executor.submit(() -> {
-        System.out.println(" Thread: " + Thread
-                .currentThread().getName());
+    Future<String> future = executor.submit(() -> {
+      System.out.println(" Thread: " + Thread
+              .currentThread().getName());
+      return "Finished";
+    });
 
-        return "Finished";
-      });
-
-      future.get();
-      future.get(1, TimeUnit.SECONDS);
-      future.cancel(true);
-      future.isCancelled();
-      future.isDone();
-
-      Assertions.assertFalse(true);
-    }
+    //Block until result is ready
+    var result = future.get();
+    //Block until result is ready or timeout
+    //var result = future.get(1, TimeUnit.SECONDS);
+    //Cancel the task
+    future.cancel(true);
+    //Check if was cancelled
+    future.isCancelled();
+    //Check if is done
+    future.isDone();
+  }
 
   @Test
   public void completableFuture()
-          throws InterruptedException, ExecutionException, TimeoutException {
+          throws InterruptedException,
+          ExecutionException, TimeoutException {
     ExecutorService executor = Executors
             .newSingleThreadExecutor();
 
@@ -42,7 +45,6 @@ public class FutureTest {
     CompletableFuture.supplyAsync(() -> {
       System.out.println(" Thread: " + Thread
               .currentThread().getName());
-
       return "Finished 1";
     }, executor);
 
