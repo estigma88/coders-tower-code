@@ -5,6 +5,10 @@ global:
 scrape_configs:
   - job_name: prometheus
     honor_labels: true
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: spring-observability
+    honor_labels: true
     metrics_path: /actuator/prometheus
     static_configs:
-      - targets: ["localhost:8080"]
+      - targets: ["host.docker.internal:8080"]
