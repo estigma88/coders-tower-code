@@ -1,0 +1,19 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, health, prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles[http.server.requests]: 0.5, 0.7, 0.95, 0.99
+      percentiles-histogram[http.server.requests]: true
+      slo[http.server.requests]: 10ms, 100ms
+
+spring:
+  application:
+    name: spring-observability

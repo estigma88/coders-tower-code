@@ -1,0 +1,21 @@
+services:
+  prometheus:
+    image: prom/prometheus:v2.31.1
+    command: --config.file=/etc/prometheus/prometheus.yml --log.level=debug
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+  grafana:
+    image: grafana/grafana:8.2.3
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    user: '104'
+    links:
+      - prometheus
+volumes:
+  grafana-storage:
