@@ -17,3 +17,8 @@ management:
 spring:
   application:
     name: spring-observability
+  datasource:
+    hikari:
+      leakDetectionThreshold: 2000
+  jpa:
+    open-in-view: false
