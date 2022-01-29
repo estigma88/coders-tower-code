@@ -19,7 +19,9 @@ public class CustomersSimulation extends Simulation {
                   .get("/customers/transform"));
 
   {
-    setUp(scn.injectClosed(rampConcurrentUsers(5).to(100).during(160))
+    setUp(scn.injectClosed(rampConcurrentUsers(5)
+                    .to(100)
+                    .during(160))
             .protocols(httpProtocol));
   }
 }
