@@ -4,14 +4,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class Controller {
   private final CustomerRepository customerRepository;
+  private final Random random;
 
   public Controller(
           CustomerRepository customerRepository) {
     this.customerRepository = customerRepository;
+    this.random = new Random();
   }
 
   @GetMapping("/ping")
@@ -29,7 +32,9 @@ public class Controller {
           throws InterruptedException {
     List<CustomerEntity> customers = customerRepository.findAll();
 
-    Thread.sleep(5000); //slow operation
+    long sleep = (long) random.nextDouble(5000);
+    System.out.println(sleep);
+    Thread.sleep(sleep); //slow operation
 
     return customers;
   }
