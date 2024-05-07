@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_case_integration_tests.extesion;
+package com.coderstower.blog.a_case_integration_tests.extension;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;

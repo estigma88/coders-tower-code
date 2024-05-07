@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_case_integration_tests.application;
+package com.coderstower.blog.a_case_integration_tests.extension;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;

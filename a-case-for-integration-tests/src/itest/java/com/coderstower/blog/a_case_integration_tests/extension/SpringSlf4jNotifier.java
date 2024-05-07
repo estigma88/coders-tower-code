@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_case_integration_tests.extesion;
+package com.coderstower.blog.a_case_integration_tests.extension;
 
 import com.github.tomakehurst.wiremock.common.Notifier;
 import org.slf4j.Logger;

@@ -1,7 +1,7 @@
 package com.coderstower.blog.a_case_integration_tests.application.usecase;
 
-import com.coderstower.blog.a_case_integration_tests.application.MockedEdgesConfig;
-import com.coderstower.blog.a_case_integration_tests.extesion.ITestHandler;
+import com.coderstower.blog.a_case_integration_tests.extension.MockedEdgesConfig;
+import com.coderstower.blog.a_case_integration_tests.extension.ITestHandler;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import org.junit.jupiter.api.Test;
 

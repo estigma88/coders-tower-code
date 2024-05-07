@@ -1,7 +1,5 @@
-package com.coderstower.blog.a_case_integration_tests.application;
+package com.coderstower.blog.a_case_integration_tests.extension;
 
-import com.coderstower.blog.a_case_integration_tests.extesion.ITestExtension;
-import com.coderstower.blog.a_case_integration_tests.extesion.SpringSlf4jNotifier;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
