@@ -49,8 +49,13 @@ dependencyManagement {
 
 dependencies {
     implementation(libs.org.springframework.boot.spring.boot.starter.web)
+    implementation(libs.org.springframework.kafka.spring.kafka)
+    implementation(libs.org.springframework.boot.spring.boot.starter.data.jpa)
+    implementation(libs.org.postgresql.postgresql)
     itestImplementation(libs.org.springframework.cloud.spring.cloud.starter.contract.stub.runner)
     itestImplementation(libs.org.springframework.boot.spring.boot.starter.test)
+    itestImplementation(libs.org.springframework.kafka.spring.kafka.test)
+    itestImplementation(libs.org.testcontainers.postgresql)
     itestImplementation(libs.io.rest.assured.rest.assured)
 
 }
