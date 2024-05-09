@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_case_integration_tests.application.example1;
+package com.coderstower.blog.a_case_integration_tests.application.section1;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
