@@ -33,10 +33,6 @@ val itest = task<Test>("itest") {
     shouldRunAfter("test")
 
     useJUnitPlatform()
-
-    testLogging {
-        events("passed")
-    }
 }
 
 tasks.check { dependsOn(itest) }

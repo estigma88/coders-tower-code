@@ -39,7 +39,7 @@ public class ITestHandler {
     }
 
 
-    private String readFromFile(String filePath) throws IOException {
+    public String readFromFile(String filePath) throws IOException {
         return Files.readString(parentPath.resolve(filePath));
     }
 
