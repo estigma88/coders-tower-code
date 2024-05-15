@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_case_integration_tests.application.section2;
+package com.coderstower.blog.a_case_integration_tests.application.junitextension;
 
 import com.coderstower.blog.a_case_integration_tests.extension.ITestExtension;
 import com.coderstower.blog.a_case_integration_tests.extension.ITestHandler;

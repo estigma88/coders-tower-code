@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_case_integration_tests.application.section3;
+package com.coderstower.blog.a_case_integration_tests.application.restassured.inputfromfile;
 
 import com.coderstower.blog.a_case_integration_tests.extension.ITestExtension;
 import com.coderstower.blog.a_case_integration_tests.extension.ITestHandler;
@@ -26,7 +26,7 @@ public class UpdatePayrollInformationTest {
 
     @Test
     public void postPayrollInformation(ITestHandler iTestHandler) throws IOException {
-        var input = iTestHandler.readFromFile("testcases/section3/updatePayrrollInformation/request.json");
+        var input = iTestHandler.readFromFile("testcases/restassured/inputfromfile/updatePayrrollInformation/request.json");
 
         RestAssured.given()
                 .contentType(ContentType.JSON)

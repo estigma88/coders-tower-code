@@ -24,12 +24,12 @@ public class ITestHandler {
         wireMock.loadMappingsFrom(mocksFolder.toFile());
     }
 
-    public void validateJSONResponse(String expectedResponsePath, String response) {
+    public void assertEqualsJSON(String expectedResponsePath, String actual) {
         try {
             var expectedTree = mapper.readTree(readFromFile(expectedResponsePath));
             var expectedJSONPretty = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(expectedTree);
 
-            var currentTree = mapper.readTree(response);
+            var currentTree = mapper.readTree(actual);
             var currentJSONPretty = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(currentTree);
 
             assertEquals(expectedJSONPretty, currentJSONPretty);

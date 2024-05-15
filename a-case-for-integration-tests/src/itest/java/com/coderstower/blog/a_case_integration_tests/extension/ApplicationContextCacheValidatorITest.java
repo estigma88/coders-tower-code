@@ -13,9 +13,9 @@ class ApplicationContextCacheValidatorITest extends MockedEdgesConfig {
 
     @Test
     @DisplayName(
-            """
-                        Validate the amount of cached application context doesn't increase
-                    """
+        """
+            Validate the amount of cached application context doesn't increase
+        """
     )
     public void validate(CapturedOutput output, ITestHandler iTestHandler) {
         iTestHandler.assertCacheSizeIsLessThanOrEqualTo(output, 9);

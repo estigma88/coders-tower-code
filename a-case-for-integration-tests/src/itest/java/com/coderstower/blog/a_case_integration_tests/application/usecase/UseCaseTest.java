@@ -23,6 +23,6 @@ public class UseCaseTest extends MockedEdgesConfig {
                 .body()
                 .asString();
 
-        iTestHandler.validateJSONResponse("testcases/usecase/response.json", response);
+        iTestHandler.assertEqualsJSON("testcases/usecase/response.json", response);
     }
 }
