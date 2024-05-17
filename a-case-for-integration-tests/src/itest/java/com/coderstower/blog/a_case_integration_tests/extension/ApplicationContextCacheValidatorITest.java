@@ -9,7 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 // Test run last
 @Order(Integer.MAX_VALUE)
 @ActiveProfiles(value = "newProfile")
-class ApplicationContextCacheValidatorITest extends MockedEdgesConfig {
+class ApplicationContextCacheValidatorITest extends ITestConfiguration {
 
     @Test
     @DisplayName(

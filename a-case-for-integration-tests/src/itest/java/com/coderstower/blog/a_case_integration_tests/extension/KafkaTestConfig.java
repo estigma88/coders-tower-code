@@ -28,7 +28,7 @@ import java.time.Duration;
 )
 @ActiveProfiles(profiles = {"activate-kafka"})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-abstract class KafkaTestConfig extends MockedEdgesConfig {
+abstract class KafkaTestConfig extends ITestConfiguration {
     private Logger log = LoggerFactory.getLogger(KafkaTestConfig.class);
 
     @Autowired

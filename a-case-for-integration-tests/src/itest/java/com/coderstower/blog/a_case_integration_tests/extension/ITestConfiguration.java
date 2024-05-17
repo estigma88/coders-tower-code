@@ -16,7 +16,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMoc
 @ContextConfiguration(classes = OverriddenConfiguration.class)
 @ExtendWith(ITestExtension.class)
 @ExtendWith(OutputCaptureExtension.class)
-public abstract class MockedEdgesConfig {
+public abstract class ITestConfiguration {
     @RegisterExtension
     static WireMockExtension wm1 = WireMockExtension.newInstance()
             .options(

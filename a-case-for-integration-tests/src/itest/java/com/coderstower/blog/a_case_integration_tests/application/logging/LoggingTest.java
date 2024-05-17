@@ -10,10 +10,14 @@ import org.springframework.boot.test.system.OutputCaptureExtension;
 public class LoggingTest {
     @Test
     public void checkLog(CapturedOutput capturedOutput) {
-        System.out.println("This is a log to the console");
+        System.out.println(
+                "This is a log to the console"
+        );
 
         String all = capturedOutput.getAll();
 
-        Assertions.assertTrue(all.contains("This is a log to the console"));
+        Assertions.assertTrue(
+                all.contains("This is a log to the console")
+        );
     }
 }

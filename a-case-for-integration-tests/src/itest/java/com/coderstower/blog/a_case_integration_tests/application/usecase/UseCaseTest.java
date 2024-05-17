@@ -1,6 +1,6 @@
 package com.coderstower.blog.a_case_integration_tests.application.usecase;
 
-import com.coderstower.blog.a_case_integration_tests.extension.MockedEdgesConfig;
+import com.coderstower.blog.a_case_integration_tests.extension.ITestConfiguration;
 import com.coderstower.blog.a_case_integration_tests.extension.ITestHandler;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 
-public class UseCaseTest extends MockedEdgesConfig {
+public class UseCaseTest extends ITestConfiguration {
 
     @Test
     public void publishNextPostSuccessful(WireMockRuntimeInfo wireMockRuntimeInfo, ITestHandler iTestHandler) {
