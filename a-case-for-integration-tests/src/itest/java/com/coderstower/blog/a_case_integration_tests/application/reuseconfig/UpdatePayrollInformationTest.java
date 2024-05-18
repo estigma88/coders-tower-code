@@ -10,8 +10,11 @@ import java.io.IOException;
 public class UpdatePayrollInformationTest extends ITestConfiguration {
 
     @Test
-    public void postPayrollInformation(ITestHandler iTestHandler) throws IOException {
-        var input = iTestHandler.readFromFile("testcases/restassured/outputfromfile/updatePayrrollInformation/request.json");
+    public void postPayrollInformation(
+            ITestHandler iTestHandler) throws IOException {
+        var input = iTestHandler.readFromFile(
+           "testcases/restassured/outputfromfile/updatePayrrollInformation/request.json"
+        );
 
         var actual = RestAssured.given()
                 .contentType(ContentType.JSON)
@@ -25,6 +28,9 @@ public class UpdatePayrollInformationTest extends ITestConfiguration {
                 .extract()
                 .asString();
 
-        iTestHandler.assertEqualsJSON("testcases/restassured/outputfromfile/updatePayrrollInformation/response.json", actual);
+        iTestHandler.assertEqualsJSON(
+            "testcases/restassured/outputfromfile/updatePayrrollInformation/response.json",
+            actual
+        );
     }
 }

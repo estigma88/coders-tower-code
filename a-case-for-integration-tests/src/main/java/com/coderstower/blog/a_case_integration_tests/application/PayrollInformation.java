@@ -1,4 +1,4 @@
-package com.coderstower.blog.a_case_integration_tests.application.controller;
+package com.coderstower.blog.a_case_integration_tests.application;
 
 import java.time.LocalDateTime;
 

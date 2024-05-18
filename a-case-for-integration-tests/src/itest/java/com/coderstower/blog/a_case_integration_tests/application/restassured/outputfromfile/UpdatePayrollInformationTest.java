@@ -22,21 +22,27 @@ public class UpdatePayrollInformationTest {
     protected Integer port;
 
     @Test
-    public void postPayrollInformation(ITestHandler iTestHandler) throws IOException {
-        var input = iTestHandler.readFromFile("testcases/restassured/outputfromfile/updatePayrrollInformation/request.json");
+    public void postPayrollInformation(
+            ITestHandler iTestHandler) throws IOException {
+        var input = iTestHandler.readFromFile(
+            "testcases/restassured/outputfromfile/updatePayrrollInformation/request.json"
+        );
 
         var actual = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .port(port)
                 .body(input)
                 .when()
-                .post("/section3/payroll")
+                .post("/restassured/payroll")
                 .then()
                 .assertThat()
                 .statusCode(200)
                 .extract()
                 .asString();
 
-        iTestHandler.assertEqualsJSON("testcases/restassured/outputfromfile/updatePayrrollInformation/response.json", actual);
+        iTestHandler.assertEqualsJSON(
+            "testcases/restassured/outputfromfile/updatePayrrollInformation/response.json",
+                actual
+        );
     }
 }

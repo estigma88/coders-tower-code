@@ -13,7 +13,6 @@ import org.springframework.test.context.ActiveProfiles;
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
@@ -25,15 +24,18 @@ public class UpdatePayrollInformationTest {
     protected Integer port;
 
     @Test
-    public void postPayrollInformation(ITestHandler iTestHandler) throws IOException {
-        var input = iTestHandler.readFromFile("testcases/restassured/inputfromfile/updatePayrrollInformation/request.json");
+    public void postPayrollInformation(
+            ITestHandler iTestHandler) throws IOException {
+        var input = iTestHandler.readFromFile(
+           "testcases/restassured/inputfromfile/updatePayrrollInformation/request.json"
+        );
 
         RestAssured.given()
                 .contentType(ContentType.JSON)
                 .port(port)
                 .body(input)
                 .when()
-                .post("/section3/payroll")
+                .post("/restassured/payroll")
                 .then()
                 .assertThat()
                 .statusCode(200)
