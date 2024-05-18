@@ -1,0 +1,16 @@
+logging:
+  level:
+    org:
+      springframework:
+        test:
+          context:
+            cache: DEBUG
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:tc:postgresql://localhost:5432/test
+    username: sa
+    password: password
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
