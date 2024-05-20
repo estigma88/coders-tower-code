@@ -27,7 +27,7 @@ public class UpdatePayrollInformationTest {
     public void postPayrollInformation(
             ITestHandler iTestHandler) throws IOException {
         var input = iTestHandler.readFromFile(
-           "testcases/restassured/inputfromfile/updatePayrrollInformation/request.json"
+                "testcases/rest/inputfromfile/updatePayrrollInformation/request.json"
         );
 
         RestAssured.given()

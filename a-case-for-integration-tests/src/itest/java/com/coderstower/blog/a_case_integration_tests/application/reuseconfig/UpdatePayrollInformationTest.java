@@ -13,7 +13,7 @@ public class UpdatePayrollInformationTest extends ITestConfiguration {
     public void postPayrollInformation(
             ITestHandler iTestHandler) throws IOException {
         var input = iTestHandler.readFromFile(
-           "testcases/restassured/outputfromfile/updatePayrrollInformation/request.json"
+                "testcases/rest/outputfromfile/updatePayrrollInformation/request.json"
         );
 
         var actual = RestAssured.given()
@@ -29,7 +29,7 @@ public class UpdatePayrollInformationTest extends ITestConfiguration {
                 .asString();
 
         iTestHandler.assertEqualsJSON(
-            "testcases/restassured/outputfromfile/updatePayrrollInformation/response.json",
+                "testcases/rest/outputfromfile/updatePayrrollInformation/response.json",
             actual
         );
     }
