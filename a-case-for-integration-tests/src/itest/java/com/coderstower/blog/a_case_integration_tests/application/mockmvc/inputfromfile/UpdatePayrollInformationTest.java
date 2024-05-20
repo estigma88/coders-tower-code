@@ -24,7 +24,8 @@ public class UpdatePayrollInformationTest {
     private MockMvc mockMvc;
 
     @Test
-    public void postPayrollInformation(ITestHandler iTestHandler) throws Exception {
+    public void postPayrollInformation(
+            ITestHandler iTestHandler) throws Exception {
         var input = iTestHandler.readFromFile(
                 "testcases/rest/inputfromfile/updatePayrrollInformation/request.json"
         );

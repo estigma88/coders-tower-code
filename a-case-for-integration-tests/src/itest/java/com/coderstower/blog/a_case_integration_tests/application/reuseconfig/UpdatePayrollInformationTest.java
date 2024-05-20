@@ -1,36 +1,36 @@
 package com.coderstower.blog.a_case_integration_tests.application.reuseconfig;
 
 import com.coderstower.blog.a_case_integration_tests.extension.ITestHandler;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
 
-import java.io.IOException;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class UpdatePayrollInformationTest extends ITestConfiguration {
 
     @Test
     public void postPayrollInformation(
-            ITestHandler iTestHandler) throws IOException {
+            ITestHandler iTestHandler) throws Exception {
         var input = iTestHandler.readFromFile(
                 "testcases/rest/outputfromfile/updatePayrrollInformation/request.json"
         );
 
-        var actual = RestAssured.given()
-                .contentType(ContentType.JSON)
-                .port(port)
-                .body(input)
-                .when()
-                .post("/section3/payroll")
-                .then()
-                .assertThat()
-                .statusCode(200)
-                .extract()
-                .asString();
+        String actual = mockMvc.perform(
+                        post("/restassured/payroll")
+                                .content(input)
+                                .contentType(
+                                        MediaType.APPLICATION_JSON
+                                )
+                )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
 
         iTestHandler.assertEqualsJSON(
                 "testcases/rest/outputfromfile/updatePayrrollInformation/response.json",
-            actual
+                actual
         );
     }
 }

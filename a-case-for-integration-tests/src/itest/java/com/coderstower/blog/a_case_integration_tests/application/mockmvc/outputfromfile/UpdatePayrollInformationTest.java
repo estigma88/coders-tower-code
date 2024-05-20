@@ -37,7 +37,9 @@ public class UpdatePayrollInformationTest {
                                 )
                 )
                 .andExpect(status().isOk())
-                .andReturn().getResponse().getContentAsString();
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
 
         iTestHandler.assertEqualsJSON(
                 "testcases/rest/outputfromfile/updatePayrrollInformation/response.json",
