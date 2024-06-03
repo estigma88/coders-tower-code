@@ -10,7 +10,9 @@ spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
-    url: jdbc:tc:postgresql://localhost:5432/test
+    url: jdbc:tc:postgresql://localhost:5432/test?TC_INITSCRIPT=testcases/postgres/create.sql
     username: sa
     password: password
-    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  jpa:
+
+
