@@ -21,11 +21,10 @@ public class UseCasePostgresController {
             path = "/payroll",
             method = RequestMethod.POST
     )
-    public PayrollInformation add(
+    public PayrollInformation update(
             @RequestBody PayrollInformation payrollInformation) {
-        var newPayrollInformation = new PayrollInformationEntity();
-        newPayrollInformation.setId(
-                payrollInformation.id());
+        var newPayrollInformation = payrollInformationRepository.findById(payrollInformation.id())
+                .orElseThrow();
         newPayrollInformation.setDate(
                 payrollInformation.date());
         newPayrollInformation.setAmount(

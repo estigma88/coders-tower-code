@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -20,6 +20,12 @@ public class UpdatePayrollInformationTest extends ITestConfiguration {
     private PayrollInformationRepository payrollInformationRepository;
 
     @Test
+    @Sql(
+            scripts = {
+                    "classpath:testcases/postgres/clean.sql",
+                    "classpath:testcases/postgres/outputfrommemory/updatePayrrollInformation/data.sql"
+            }
+    )
     public void postPayrollInformation(
             ITestHandler iTestHandler) throws Exception {
         var input = iTestHandler.readFromFile(
@@ -48,7 +54,7 @@ public class UpdatePayrollInformationTest extends ITestConfiguration {
         expectedEntity.setDate(
                 LocalDateTime.parse(
                         "2024-05-06T02:02:05"));
-        expectedEntity.setAmount(1501.0);
+        expectedEntity.setAmount(1500.0);
 
         var currentEntity = payrollInformationRepository.findById(
                 1);

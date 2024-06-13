@@ -13,6 +13,5 @@ spring:
     url: jdbc:tc:postgresql://localhost:5432/test?TC_INITSCRIPT=testcases/postgres/create.sql
     username: sa
     password: password
-  jpa:
 
 
