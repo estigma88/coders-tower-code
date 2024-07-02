@@ -1,6 +1,8 @@
 package com.coderstower.blog.a_case_integration_tests.extension;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import org.springframework.boot.test.system.CapturedOutput;
 
@@ -13,7 +15,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ITestHandler {
-    private ObjectMapper mapper = new ObjectMapper();
+    private ObjectMapper mapper = new ObjectMapper()
+            .registerModule(new JavaTimeModule())
+            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     private Path parentPath = Path.of(
             "src/itest/resources/");
 
@@ -27,6 +31,20 @@ public class ITestHandler {
 
         wireMock.loadMappingsFrom(
                 mocksFolder.toFile());
+    }
+
+    public void assertEqualsJSON(
+            String expectedResponsePath,
+            Object actual) {
+        try {
+            String actualJSON = mapper.writeValueAsString(
+                    actual);
+
+            assertEqualsJSON(expectedResponsePath,
+                    actualJSON);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void assertEqualsJSON(
@@ -67,18 +85,18 @@ public class ITestHandler {
 
         assertThat(matcher.find())
                 .withFailMessage(
-    """
-        Cannot extract the size from ApplicationContext cache statistics,
-        Be sure you have the following config in your test profile:
-                                
-        logging:
-          level:
-            org:
-              springframework:
-                test:
-                  context:
-                    cache: DEBUG
-        """
+                        """
+                                Cannot extract the size from ApplicationContext cache statistics,
+                                Be sure you have the following config in your test profile:
+                                                        
+                                logging:
+                                  level:
+                                    org:
+                                      springframework:
+                                        test:
+                                          context:
+                                            cache: DEBUG
+                                """
                 )
                 .isTrue();
 
@@ -86,19 +104,19 @@ public class ITestHandler {
 
         assertThat(Integer.parseInt(sizeValue))
                 .withFailMessage(
-"""
-        Expected max allowed cache size $maxCacheSize, and actual was $sizeValue.
-                                
-        If this assertion failed, it means new ITESTs were created and they are creating
-        new ApplicationContext, which is not cached previously. This causes the ITESTs to be
-        slow.
-                                
-        As a suggestion, try to refactor your ITEST to reuse previous ApplicationContext configuration,
-        so, no new ApplicationContext is created.
-                                
-        If the refactor is not possible or the use case requires a new ApplicationContext configuration,
-        update this tests to fit the new cache size.
-        """
+                        """
+                                Expected max allowed cache size $maxCacheSize, and actual was $sizeValue.
+                                                        
+                                If this assertion failed, it means new ITESTs were created and they are creating
+                                new ApplicationContext, which is not cached previously. This causes the ITESTs to be
+                                slow.
+                                                        
+                                As a suggestion, try to refactor your ITEST to reuse previous ApplicationContext configuration,
+                                so, no new ApplicationContext is created.
+                                                        
+                                If the refactor is not possible or the use case requires a new ApplicationContext configuration,
+                                update this tests to fit the new cache size.
+                                """
                 )
                 .isLessThanOrEqualTo(maxCacheSize);
     }
