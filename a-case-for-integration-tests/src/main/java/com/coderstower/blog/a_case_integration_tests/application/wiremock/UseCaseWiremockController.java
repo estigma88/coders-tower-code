@@ -14,12 +14,13 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(path = "/wiremock")
-public class UseCaseWiremockController{
-    private final Double currentPayroll = 1000d;
+public class UseCaseWiremockController {
     private final RestClient restClient;
     private final URI payrollURI;
 
-    public UseCaseWiremockController(@Value("${payroll.uri}") URI payrollURI, RestClient.Builder restClientBuilder) {
+    public UseCaseWiremockController(
+            @Value("${payroll.uri}") URI payrollURI,
+            RestClient.Builder restClientBuilder) {
         this.payrollURI = payrollURI;
         this.restClient = restClientBuilder.build();
     }
@@ -31,13 +32,11 @@ public class UseCaseWiremockController{
     public PayrollInformationResponse add(
             @RequestBody PayrollInformation payrollInformation) {
 
-        var response = restClient
+        return restClient
                 .post()
                 .uri(payrollURI)
                 .body(payrollInformation)
                 .retrieve()
                 .body(PayrollInformationResponse.class);
-
-        return response;
     }
 }
