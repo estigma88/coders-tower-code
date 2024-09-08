@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/payroll",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "id": 1,
+          "date": "2024-05-06T02:02:05",
+          "amount": 1600.0
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "payrollInformation": {
+        "id": 1,
+        "date": "2024-05-06T02:02:05",
+        "amount": 1500
+      },
+      "saved": true
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
