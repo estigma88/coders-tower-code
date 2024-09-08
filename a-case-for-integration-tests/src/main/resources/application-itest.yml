@@ -16,5 +16,6 @@ spring:
 
 payroll:
   uri: http://localhost:8089/payroll
+#  uri: http://localhost:${wiremock.server.port}/payroll
 
 

@@ -19,7 +19,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @ActiveProfiles("itest")
-@AutoConfigureWireMock(stubs = {"classpath:testcases/wiremock/contract/updatePayrrollInformation/mocks"})
+@AutoConfigureWireMock(
+        stubs = {"classpath:testcases/wiremock/contract/updatePayrrollInformation/mocks"},
+        port = 0
+)
 @ExtendWith(ITestExtension.class)
 public class UpdatePayrollInformationTest extends ITestConfiguration {
 
