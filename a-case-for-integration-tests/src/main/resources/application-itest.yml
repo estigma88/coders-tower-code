@@ -14,4 +14,8 @@ spring:
     username: sa
     password: password
 
+payroll:
+  uri: http://localhost:8089/payroll
+#  uri: http://localhost:${wiremock.server.port}/payroll
+
 
