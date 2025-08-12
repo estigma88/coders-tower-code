@@ -8,7 +8,7 @@ import io.gatling.javaapi.http.HttpProtocolBuilder;
 import static io.gatling.javaapi.core.OpenInjectionStep.atOnceUsers;
 import static io.gatling.javaapi.http.HttpDsl.http;
 
-public class RequestOneSimulation extends Simulation {
+public class OneRequestSimulation extends Simulation {
     private final HttpProtocolBuilder httpConf =
             http.baseUrl("http://localhost:8080/");
 
