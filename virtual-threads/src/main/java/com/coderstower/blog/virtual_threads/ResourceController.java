@@ -18,6 +18,8 @@ import java.nio.file.Path;
 public class ResourceController {
     @GetMapping
     public ResponseEntity<Resource> getFile(@RequestParam String path) throws Exception {
+        Thread.sleep(500);
+
         Path filePath = Path.of(path);
         File file = filePath.toFile();
 

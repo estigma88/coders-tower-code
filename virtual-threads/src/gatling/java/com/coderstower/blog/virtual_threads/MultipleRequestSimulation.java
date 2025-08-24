@@ -29,11 +29,11 @@ public class MultipleRequestSimulation extends Simulation {
                                         )
                                 )
                         .injectOpen(
-                                incrementUsersPerSec(50)
+                                incrementUsersPerSec(100)
                                         .times(5)
-                                        .eachLevelLasting(Duration.ofSeconds(30))
+                                        .eachLevelLasting(Duration.ofSeconds(10))
                                         .separatedByRampsLasting(Duration.ofSeconds(5))
-                                        .startingFrom(20)
+                                        .startingFrom(10)
                                 )
         ).protocols(httpConf);
     }
